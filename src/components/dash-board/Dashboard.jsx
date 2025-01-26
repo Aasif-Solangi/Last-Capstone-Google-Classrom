@@ -70,14 +70,11 @@ const Dashboard = () => {
           </Box>
           <Typography sx={{ marginTop: 3, marginBottom: 2, fontWeight: "bold" }}>
             To-do
-          </Typography><Box>
-
-          </Box>
+          </Typography>
           {classRooms.map((classRoom) => (
             <Box key={classRoom.id} display="flex" alignItems="center" gap={2} sx={{ marginBottom: 2 }}  >
               <Box className="text-white rounded-5 d-flex justify-content-center align-items-center"
-                sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}
-              >
+                sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
                 {classRoom.name.charAt(0)}
               </Box>
               <Typography>{classRoom.name}</Typography>
@@ -109,6 +106,7 @@ const Dashboard = () => {
             <Box sx={{ width: { xs: "100%", sm: "50%", md: "25%" } }}>
               <Card className="mt-3">
                 <CardContent>
+
                   <Typography variant="h6" fontWeight="bold">
                     <Box className="d-flex justify-content-between align-content-center">
                       <img src={MeetIcon} width={30} alt="Icon" />
