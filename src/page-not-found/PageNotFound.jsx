@@ -5,8 +5,8 @@ import ImgNotFound from  '../components/assets/'
 const PageNotFound = () => {
   return (
     <>
-
-        
+    
+       
     </>
   )
 }

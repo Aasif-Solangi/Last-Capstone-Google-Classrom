@@ -14,6 +14,10 @@ const Dashboard = () => {
     { id: 2, name: "English Communication" },
     { id: 3, name: "WordPress" },
     { id: 4, name: "English 01" },
+    { id: 5, name: "Professional Development" },
+    { id: 6, name: "Web Dev Frontend S01" },
+    { id: 7, name: "English Communication" },
+    { id: 8, name: "Xwave Digital Literacy (Sindhi)" },
   ];
 
   const assignments = [
@@ -161,7 +165,6 @@ const Dashboard = () => {
           </Box>
         </Box>
       </Box>
-
     </>
   );
 };
