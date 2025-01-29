@@ -89,8 +89,7 @@ const Dashboard = () => {
         <Box flexGrow={1}>
           <Box className="mt-2"
             display="flex"
-            sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }}
-          >
+            sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }}>
             <Button>
               <Typography sx={{ textTransform: "none" }}>Stream</Typography>
             </Button>
