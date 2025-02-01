@@ -3,10 +3,11 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import HomeIcon from "@mui/icons-material/Home";
 import GradingIcon from "@mui/icons-material/Grading";
 import { Box, Button, Card, CardContent, Grid, Typography } from "@mui/material";
-import BgImg from "../assets/bg.png";
-import ProfileIcon from "../assets/profile-icon.png";
+import BgImg from "../../assets/bg.png";
+import ProfileIcon from "../../assets/profile-icon.png";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import MeetIcon from '../assets/meet-icon.png'
+import MeetIcon from '../../assets/meet-icon.png'
+import { useNavigate } from "react-router";
 
 const Dashboard = () => {
   const classRooms = [
@@ -28,6 +29,8 @@ const Dashboard = () => {
     { id: '5', text: 'Let your class know about the latest updates!', date: '26 Jan' },
     { id: '6', text: 'Keep your class informed with a new announcement!', date: '28 Jan' }
   ];
+
+  const navigate = useNavigate();
   return (
     <>
       <Box className="mt-5"
@@ -90,15 +93,16 @@ const Dashboard = () => {
           <Box className="mt-2"
             display="flex"
             sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }}>
-            <Button>
+            <Button onClick={()=>navigate("/stream")}>
               <Typography sx={{ textTransform: "none" }}>Stream</Typography>
             </Button>
-            <Button>
-              <Typography sx={{ color: "#007bff", textTransform: "none" }}>
-                Classroom
+            <Button onClick={()=>navigate("/classroom")}>
+
+              <Typography sx={{ color: "#007bff", textTransform: "none" }} className="mx-4">
+                Classwork
               </Typography>
             </Button>
-            <Button>
+            <Button onClick={() => navigate("/people")}>
               <Typography sx={{ textTransform: "none" }}>People</Typography>
             </Button>
           </Box>
@@ -107,9 +111,7 @@ const Dashboard = () => {
           </Box>
           <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2 }}>
             <Box sx={{ width: { xs: "100%", sm: "50%", md: "25%" } }}>
-              <Card className="mt-3">
-                <CardContent>
-
+              <Card className="mt-4 py-2 px-3 py-4">
                   <Typography variant="h6" fontWeight="bold">
                     <Box className="d-flex justify-content-between align-content-center">
                       <img src={MeetIcon} width={30} alt="Icon" />
@@ -122,7 +124,6 @@ const Dashboard = () => {
                   <Button variant="contained" color="primary" sx={{ marginTop: 2, width: '100%' }}>
                     Join
                   </Button>
-                </CardContent>
               </Card>
               <Card className="mt-3 py-2 d-none d-sm-block">
                 <CardContent>

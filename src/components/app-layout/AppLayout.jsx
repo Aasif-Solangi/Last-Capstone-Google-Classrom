@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { AppBar, Box, Toolbar, IconButton, Typography, Drawer, Divider, CssBaseline, useTheme, useMediaQuery, } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import ProfileIcon from "../assets/profile-icon.png";
-import ClassroomIcon from "../assets/Classroom-icon.svg";
+import ProfileIcon from "../../assets/profile-icon.png";
+import ClassroomIcon from "../../assets/Classroom-icon.svg";
 import DehazeIcon from "@mui/icons-material/Dehaze";
 import AppsIcon from "@mui/icons-material/Apps";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
