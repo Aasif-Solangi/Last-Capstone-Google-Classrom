@@ -6,6 +6,7 @@ import AppLayout from "./components/app-layout/AppLayout";
 import Dashboard from "./components/dash-board/Dashboard";
 import People from './Tabs/people/People';
 import Classwork from "./Tabs/class-work/Classwork";
+import Stream from "./Tabs/stream/Stream";
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/people" element={<People />} />
+        <Route path="/class-work" element={<Classwork />} />
+        <Route path="/stream" element={<Stream />} />
       </Routes>
-      <Classwork />
     </Router>
   );
 }

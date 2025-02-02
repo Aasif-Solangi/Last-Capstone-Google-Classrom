@@ -96,5 +96,5 @@
   //     </Box>
   //   );
   // };
-
+  // 
   // export default ClassDetail;

@@ -25,8 +25,6 @@ const Dashboard = () => {
     { id: 7, name: "English Communication" },
     { id: 8, name: "Xwave Digital Literacy (Sindhi)" }
   ];
-
-
   const Teachers = [
     { id: 1, name: "xWave Team", image: xWave },
     { id: 2, name: "Ijaz Liaqat", image: Developer },
@@ -34,14 +32,14 @@ const Dashboard = () => {
   ];
 
   const Students = [
-    { id: 1, name: "Aasif ALi", image: Profile },
+    { id: 1, name: "Aasif Ali", image: Profile },
     { id: 2, name: "Abuzar Ali", image: Abuzar },
     { id: 3, name: "Ayaz", image: Ayaz },
     { id: 4, name: "Faiz", image: Faiz },
     { id: 5, name: "Muhammad Aurif", image: Arif },
     { id: 6, name: "Muhammad Haris", image: Haris }
   ];
-  
+
   const navigate = useNavigate();
 
   return (
@@ -49,72 +47,65 @@ const Dashboard = () => {
       <Box className="mt-5"
         display="flex"
         flexDirection={{ xs: "column", md: "row" }}
-        sx={{ padding: 2, gap: 2 }}
+        sx={{ gap: 2 }}
       >
         <Box
           sx={{
             width: { xs: "100%", md: "22%" },
             borderRight: { xs: "none", md: "1px solid #ddd" },
             borderBottom: { xs: "none", md: "1px solid #ddd" },
-            paddingRight: 2,
 
           }}
         >
-          <Box sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className="mt-3">
-            <Box
-              display="flex"
-              alignItems="center"
-              gap={2}
-              sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0", padding: 1 }}
-            >
-              <HomeIcon className="fs-5" />
-              <Typography>Home</Typography>
-            </Box>
-            <Box
-              display="flex"
-              alignItems="center"
-              gap={2}
-              sx={{ padding: 1, marginTop: 1 }}
-            >
-              <CalendarTodayIcon className="fs-5" />
-              <Typography>Calendar</Typography>
-            </Box>
-            <Box
-              display="flex"
-              alignItems="center"
-              gap={2}
-              sx={{ padding: 1, marginTop: 1 }}>
-              <GradingIcon className="fs-5" />
-              <Typography>Enroll</Typography>
-            </Box>
-          </Box>
-          <Typography sx={{ marginTop: 3, marginBottom: 2, fontWeight: "bold" }}>
-            To-do
-          </Typography>
-          {classRooms.map((classRoom) => (
-            <Box key={classRoom.id} display="flex" alignItems="center" gap={2} sx={{ marginBottom: 2 }}  >
-              <Box className="text-white rounded-5 d-flex justify-content-center align-items-center"
-                sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
-                {classRoom.name.charAt(0)}
+          <Box sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className="mt-4">
+            <Box display="flex" alignItems="center" gap={2} sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0", padding: 1 }}  >
+              <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
+                <HomeIcon className="fs-5" />
+                <Typography >Home</Typography>
               </Box>
-              <Typography>{classRoom.name}</Typography>
             </Box>
-          ))}
+            <Box display="flex" alignItems="center" gap={2} sx={{ padding: 1 }} className='my-2' >
+              <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
+                <CalendarTodayIcon className="fs-5" />
+                <Typography >Calendar</Typography>
+              </Box>
+            </Box>
 
+            <Box display="flex" alignItems="center" gap={2} sx={{ padding: 1 }}>
+              <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
+                <GradingIcon className="fs-5" />
+                <Typography >Enroll</Typography>
+              </Box>
+            </Box>
+
+          </Box>
+          <Box className='mx-3'>
+            <Typography sx={{ marginTop: 3, marginBottom: 2, fontWeight: "bold" }}>
+              To-do
+            </Typography>
+            {classRooms.map((classRoom) => (
+              <Box key={classRoom.id} display="flex" alignItems="center" gap={2} sx={{ marginBottom: 2 }}  >
+                <Box className="text-white rounded-5 d-flex justify-content-center align-items-center"
+                  sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
+                  {classRoom.name.charAt(0)}
+                </Box>
+                <Typography>{classRoom.name}</Typography>
+              </Box>
+            ))}
+          </Box>
         </Box>
         <Box flexGrow={1}>
           <Box className="mt-3"
-            display="flex"
-            sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }}>
-            <Button>
+            display="flex" sx={{ borderBottom: "1px solid #ddd" }}>
+            <Button onClick={() => navigate("/stream")}>
               <Typography sx={{ textTransform: "none" }} className="mx-3">Stream</Typography>
             </Button>
-            <Button onClick={()=>navigate("/Clas")}>
+            <Button onClick={() => navigate("/class-work")}>
               <Typography sx={{ color: "#007bff", textTransform: "none" }}>
-              Classwork
+                Classwork
               </Typography>
             </Button>
-            <Button onClick={() => navigate("/people")}>
+            <Button onClick={() => navigate("/people")} sx={{ borderBottom: "3px solid rgb(18, 43, 231)", }}>
               <Typography sx={{ textTransform: "none" }} className="ms-3">People</Typography>
             </Button>
           </Box>
@@ -140,8 +131,8 @@ const Dashboard = () => {
                 <Button sx={{ textTransform: 'none' }}>View All</Button>
               </Box>
               <Box className='d-flex justify-content-between' sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} >
-              <Typography variant="h5" className="text-dark">Classmates</Typography>
-              <Typography variant="body2"> 5 Students</Typography>
+                <Typography variant="h5" className="text-dark">Classmates</Typography>
+                <Typography variant="body2"> 5 Students</Typography>
               </Box>
 
               {Students.map((student) => (

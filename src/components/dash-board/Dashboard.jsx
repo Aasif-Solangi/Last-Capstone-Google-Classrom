@@ -36,45 +36,39 @@ const Dashboard = () => {
       <Box className="mt-5"
         display="flex"
         flexDirection={{ xs: "column", md: "row" }}
-        sx={{ padding: 2, gap: 2 }}
+        sx={{ gap: 2 }}
       >
         <Box
           sx={{
             width: { xs: "100%", md: "22%" },
             borderRight: { xs: "none", md: "1px solid #ddd" },
             borderBottom: { xs: "none", md: "1px solid #ddd" },
-            paddingRight: 2,
 
           }}
         >
-          <Box sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className="mt-3">
-            <Box
-              display="flex"
-              alignItems="center"
-              gap={2}
-              sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0", padding: 1 }}
-            >
-              <HomeIcon className="fs-5" />
-              <Typography>Home</Typography>
+          <Box sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className="mt-4">
+            <Box display="flex" alignItems="center" gap={2} sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0", padding: 1 }}  >
+              <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
+                <HomeIcon className="fs-5" />
+                <Typography >Home</Typography>
+              </Box>
             </Box>
-            <Box
-              display="flex"
-              alignItems="center"
-              gap={2}
-              sx={{ padding: 1, marginTop: 1 }}
-            >
-              <CalendarTodayIcon className="fs-5" />
-              <Typography>Calendar</Typography>
+            <Box display="flex" alignItems="center" gap={2} sx={{ padding: 1 }} className='my-2' >
+              <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
+                <CalendarTodayIcon className="fs-5" />
+                <Typography >Calendar</Typography>
+              </Box>
             </Box>
-            <Box
-              display="flex"
-              alignItems="center"
-              gap={2}
-              sx={{ padding: 1, marginTop: 1 }}>
-              <GradingIcon className="fs-5" />
-              <Typography>Enroll</Typography>
+
+            <Box display="flex" alignItems="center" gap={2} sx={{ padding: 1 }}>
+              <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
+                <GradingIcon className="fs-5" />
+                <Typography >Enroll</Typography>
+              </Box>
             </Box>
+            
           </Box>
+          <Box className='mx-3'>
           <Typography sx={{ marginTop: 3, marginBottom: 2, fontWeight: "bold" }}>
             To-do
           </Typography>
@@ -87,17 +81,16 @@ const Dashboard = () => {
               <Typography>{classRoom.name}</Typography>
             </Box>
           ))}
-
+        </Box>
         </Box>
         <Box flexGrow={1}>
-          <Box className="mt-2"
+          <Box className="mt-4"
             display="flex"
             sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }}>
-            <Button onClick={()=>navigate("/stream")}>
+            <Button onClick={() => navigate("/stream")}>
               <Typography sx={{ textTransform: "none" }}>Stream</Typography>
             </Button>
-            <Button onClick={()=>navigate("/classroom")}>
-
+            <Button onClick={() => navigate("/class-work")}>
               <Typography sx={{ color: "#007bff", textTransform: "none" }} className="mx-4">
                 Classwork
               </Typography>
@@ -112,18 +105,18 @@ const Dashboard = () => {
           <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2 }}>
             <Box sx={{ width: { xs: "100%", sm: "50%", md: "25%" } }}>
               <Card className="mt-4 py-2 px-3 py-4">
-                  <Typography variant="h6" fontWeight="bold">
-                    <Box className="d-flex justify-content-between align-content-center">
-                      <img src={MeetIcon} width={30} alt="Icon" />
-                      Meet
-                      <Typography>
-                        <MoreVertIcon sx={{ marginLeft: 'auto' }} className="me-3" />
-                      </Typography>
-                    </Box>
-                  </Typography>
-                  <Button variant="contained" color="primary" sx={{ marginTop: 2, width: '100%' }}>
-                    Join
-                  </Button>
+                <Typography variant="h6" fontWeight="bold">
+                  <Box className="d-flex justify-content-between align-content-center">
+                    <img src={MeetIcon} width={30} alt="Icon" />
+                    Meet
+                    <Typography>
+                      <MoreVertIcon sx={{ marginLeft: 'auto' }} className="me-3" />
+                    </Typography>
+                  </Box>
+                </Typography>
+                <Button variant="contained" color="primary" sx={{ marginTop: 2, width: '100%' }}>
+                  Join
+                </Button>
               </Card>
               <Card className="mt-3 py-2 d-none d-sm-block">
                 <CardContent>
