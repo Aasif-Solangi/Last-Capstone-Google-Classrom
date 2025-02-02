@@ -1,30 +1,41 @@
-import { Box, Typography } from '@mui/material'
-import React from 'react'
-import ArticleIcon from '@mui/icons-material/Article';
-import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import React from "react";
+import { Box, Button, Card, CardContent, Grid, Typography } from "@mui/material";
+import { useNavigate } from "react-router";
 
 const Home = () => {
+    const classRooms = [
+        { id: 1, name: "Web Dev Frontend S02" },
+        { id: 2, name: "English Communication" },
+        { id: 3, name: "WordPress" },
+        { id: 4, name: "English 01" },
+        { id: 5, name: "Professional Development" },
+        { id: 6, name: "Web Dev Frontend S01" },
+        { id: 7, name: "English Communication" },
+        { id: 8, name: "Xwave Digital Literacy (Sindhi)" },
+    ];
+
+
+    const navigate = useNavigate();
     return (
         <>
-            <Box>
-                <Card>
-                    <Box className='d-flex'>
-                        <Box>
-                            <Typography>Web Dev Frontend SO2</Typography>
-                            <Typography>Cohort 2 - Kingri</Typography>
-                            <Typography className='mt-2'>xWave Team</Typography>
-                        </Box>
-                        <Box><ArticleIcon /></Box>
-                    </Box>
-                    <Typography>Due Tomorrow</Typography>
+            <Box className="mt-5"
+                display="flex"
+                flexDirection={{ xs: "column", md: "row" }}
+                sx={{ gap: 2 }}
+            >
+                <Box
+                    sx={{
+                        width: { xs: "100%", md: "22%" },
+                        borderRight: { xs: "none", md: "1px solid #ddd" },
+                        borderBottom: { xs: "none", md: "1px solid #ddd" },
 
-                    <Box>
-                        <AssignmentIndIcon />
-                    </Box>
-                </Card>
+                    }}
+                >
+                </Box>
+
             </Box>
         </>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

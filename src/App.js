@@ -7,6 +7,7 @@ import Dashboard from "./components/dash-board/Dashboard";
 import People from './Tabs/people/People';
 import Classwork from "./Tabs/class-work/Classwork";
 import Stream from "./Tabs/stream/Stream";
+import Home from "./components/home/Home";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/class-work" element={<Classwork />} />
         <Route path="/stream" element={<Stream />} />
       </Routes>
+      <Home />
     </Router>
   );
 }

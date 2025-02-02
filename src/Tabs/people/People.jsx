@@ -25,6 +25,7 @@ const Dashboard = () => {
     { id: 7, name: "English Communication" },
     { id: 8, name: "Xwave Digital Literacy (Sindhi)" }
   ];
+  
   const Teachers = [
     { id: 1, name: "xWave Team", image: xWave },
     { id: 2, name: "Ijaz Liaqat", image: Developer },
