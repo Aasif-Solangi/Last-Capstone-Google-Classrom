@@ -192,7 +192,6 @@ const Classwork = () => {
                             <Box className="py-2 mt-5">
                                 <Typography variant="h5" sx={{ textTransform: 'none' }}></Typography>
                             </Box>
-
                             {Students.map((student) => (
                                 <Box display="flex" alignItems="center" gap={2} sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className='my-3'>
                                     <Box key={student.id} display="flex" alignItems="center" gap={1}>
@@ -200,7 +199,7 @@ const Classwork = () => {
                                             sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
                                             <img src={student.image} alt={student.name} className="rounded-5" />
                                         </Box>
-                                        <Box>
+                                        <Box> 
                                             <Typography>{student.name}</Typography>
                                         </Box>
                                     </Box>
@@ -214,4 +213,7 @@ const Classwork = () => {
     )
 }
 
+
+
 export default Classwork;
+

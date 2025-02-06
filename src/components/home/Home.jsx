@@ -21,18 +21,14 @@ const Home = () => {
             <Box className="mt-5"
                 display="flex"
                 flexDirection={{ xs: "column", md: "row" }}
-                sx={{ gap: 2 }}
-            >
+                sx={{ gap: 2 }}>
                 <Box
-                    sx={{
+                     sx={{
                         width: { xs: "100%", md: "22%" },
                         borderRight: { xs: "none", md: "1px solid #ddd" },
                         borderBottom: { xs: "none", md: "1px solid #ddd" },
-
-                    }}
-                >
+                        }}>
                 </Box>
-
             </Box>
         </>
     );

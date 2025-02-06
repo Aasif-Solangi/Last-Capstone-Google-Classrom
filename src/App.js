@@ -8,6 +8,7 @@ import People from './Tabs/people/People';
 import Classwork from "./Tabs/class-work/Classwork";
 import Stream from "./Tabs/stream/Stream";
 import Home from "./components/home/Home";
+import ClassDetail from "./components/class-detail/ClassDetail";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         <Route path="/people" element={<People />} />
         <Route path="/class-work" element={<Classwork />} />
         <Route path="/stream" element={<Stream />} />
+        <Route path="/class-detail" element={<ClassDetail />} />
+        <Route path="/home" element={<Home />} />
+
       </Routes>
       <Home />
     </Router>

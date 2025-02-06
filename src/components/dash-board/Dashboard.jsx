@@ -14,6 +14,11 @@ const Dashboard = () => {
     { id: 1, name: "Web Dev Frontend S02" },
     { id: 2, name: "English Communication" },
     { id: 3, name: "WordPress" },
+    { id: 4, name: "English 01" },
+    { id: 5, name: "Professional Development" },
+    { id: 6, name: "Web Dev Frontend S01" },
+    { id: 7, name: "English Communication" },
+    { id: 8, name: "Xwave Digital Literacy" },
   ];
 
   return (
@@ -22,16 +27,14 @@ const Dashboard = () => {
       <Box className="mt-5"
         display="flex"
         flexDirection={{ xs: "column", md: "row" }}
-        sx={{ gap: 2 }}
-      >
+        sx={{ gap: 2 }}>
         <Box
           sx={{
-            width: { xs: "100%", md: "22%" },
+            width: { xs: "100%", md: "25%" },
             borderRight: { xs: "none", md: "1px solid #ddd" },
             borderBottom: { xs: "none", md: "1px solid #ddd" },
 
-          }}
-        >
+          }}>
           <Box sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className="mt-4">
             <Box display="flex" alignItems="center" gap={2} sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0", padding: 1 }}  >
               <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
@@ -58,7 +61,7 @@ const Dashboard = () => {
             <Typography sx={{ marginTop: 3, marginBottom: 2, fontWeight: "bold" }}>
               To-do
             </Typography>
-            {classRooms.map((classRoom) => (
+              {classRooms.map((classRoom) => (
               <Box key={classRoom.id} display="flex" alignItems="center" gap={2} sx={{ marginBottom: 2 }}  >
                 <Box className="text-white rounded-5 d-flex justify-content-center align-items-center"
                   sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
@@ -70,8 +73,8 @@ const Dashboard = () => {
           </Box>
         </Box>
 
-        <Box sx={{ flexGrow: 1, padding: 3 }}>
-          <Grid container spacing={3} justifyContent="center">
+        <Box sx={{ width:"90%", padding: 3 }}>
+          <Grid container spacing={3} justifyContent="flex start">
             {classRooms.map((classRoom) => (
               <Grid item xs={12} sm={6} md={4} key={classRoom.id}>
                 <Card sx={{ borderRadius: 2, overflow: "hidden", boxShadow: 3, height: '300'}}>
@@ -102,34 +105,32 @@ const Dashboard = () => {
                         right: 5,
                         color: "#fff",
                         background: "rgba(0,0,0,0.3)",
-                      }}
-                    >
+                      }}>
                       <MoreVertIcon />
                     </IconButton>
                   </Box>
 
                   <CardContent className='mt-5 pt-5'>
-                    <Typography variant="body2" color="textSecondary">
+                    {/* <Typography variant="body2" color="textSecondary">
                       Due tomorrow
-                    </Typography>
-                    <Typography variant="body2" fontWeight="bold">
+                    </Typography> */}
+                    {/* <Typography variant="body2" fontWeight="bold">
                       11:59 PM – Group 1 (Google Cl...)
-                    </Typography>
+                    </Typography> */}
 
-                    <Box display="end" mt={2} sx={{ borderTop: "1px solid #ddd", paddingBottom: 2 }} className="mt-4">
-                      <IconButton>
-                        <FolderOpenIcon />
-                      </IconButton>
-                      <IconButton>
-                        <AssignmentIndIcon />
-                      </IconButton>
-                    </Box>
+                    <Box display="flex" justifyContent="flex-end" mt={2} sx={{ borderTop: "1px solid #ddd"}} className="mt-4">
+                     <IconButton>
+                     <FolderOpenIcon />
+                     </IconButton>
+                     <IconButton>
+                     <AssignmentIndIcon />
+                     </IconButton>
+                     </Box>
                   </CardContent>
                 </Card>
               </Grid>
             ))}
           </Grid>
-
         </Box>
       </Box>
     </>
