@@ -3,7 +3,6 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import HomeIcon from "@mui/icons-material/Home";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import GradingIcon from "@mui/icons-material/Grading";
-import xWave from '../../assets/xWave.png';
 import Profile from '../../assets/Asif.png';
 import Developer from '../../assets/Sir.png';
 import TAImage from '../../assets/TA-profile.png';
@@ -51,14 +50,15 @@ const Classwork = () => {
                         borderRight: { xs: "none", md: "1px solid #ddd" },
                         borderBottom: { xs: "none", md: "1px solid #ddd" },
 
-                    }}
-                >
+                    }}>
                     <Box sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className="mt-4">
-                        <Box display="flex" alignItems="center" gap={2} sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0", padding: 1 }}  >
-                            <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
-                                <HomeIcon className="fs-5" />
-                                <Typography >Home</Typography>
-                            </Box>
+                        <Box display="flex" alignItems="center" gap={2} sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0" }}  >
+                            <Button sx={{ textTransform: 'none', color: 'black' }} onClick={(() => navigate("/"))}>
+                                <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
+                                    <HomeIcon className="fs-5" />
+                                    <Typography >Home</Typography>
+                                </Box>
+                            </Button>
                         </Box>
                         <Box display="flex" alignItems="center" gap={2} sx={{ padding: 1 }} className='my-2' >
                             <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
@@ -80,9 +80,16 @@ const Classwork = () => {
                             To-do
                         </Typography>
                         {classRooms.map((classRoom) => (
-                            <Box key={classRoom.id} display="flex" alignItems="center" gap={2} sx={{ marginBottom: 2 }}  >
-                                <Box className="text-white rounded-5 d-flex justify-content-center align-items-center"
-                                    sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
+                            <Box
+                                key={classRoom.id}
+                                display="flex"
+                                alignItems="center"
+                                gap={2}
+                                sx={{ marginBottom: 2, cursor: "pointer" }}
+                                onClick={() => navigate(`/class-detail/${classRoom.id}`)}>
+                                <Box
+                                    className="text-white rounded-5 d-flex justify-content-center align-items-center"
+                                    sx={{ width: 32, height: 32, backgroundColor: "#007bff" }} >
                                     {classRoom.name.charAt(0)}
                                 </Box>
                                 <Typography>{classRoom.name}</Typography>
@@ -91,7 +98,7 @@ const Classwork = () => {
                     </Box>
                 </Box>
                 <Box flexGrow={1}>
-                    <Box className="mt-3"
+                    <Box className="mt-3 pt-2"
                         display="flex" sx={{ borderBottom: "1px solid #ddd" }}>
                         <Button onClick={() => navigate("/stream")}>
                             <Typography sx={{ textTransform: "none" }} className="mx-3">Stream</Typography>
@@ -112,13 +119,18 @@ const Classwork = () => {
                                 <Button sx={{ textTransform: 'none' }} className="fs-6">View your work</Button>
                             </Button>
 
-                            <TextField className='text-dark w-50 my-3' select
-                                sx={{ flex: 1, minWidth: "200px" }}>
-                                2 adults . 0 children . 1 room
-                                <MenuItem>All Topics</MenuItem>
-                                <MenuItem>Final Capstone Project</MenuItem>
-                                <MenuItem>Capstone Project</MenuItem>
+                            <TextField
+                                className="text-dark w-50 my-3"
+                                select
+                                sx={{ flex: 1, minWidth: "200px" }}
+                                value="All Topics">
+
+                                <MenuItem value="All Topics">All Topics</MenuItem>
+                                <MenuItem value="Final Capstone Project">Final Capstone Project</MenuItem>
+                                <MenuItem value="Capstone Project">Capstone Project</MenuItem>
                             </TextField>
+
+
                             <Box gap={2} className='my-3 d-flex justify-content-between'>
                                 <Box class='d-flex justify-content-between align-items-center gap-2'>
                                     <Box className="text-white rounded-5 d-flex justify-content-center align-items-center py-3"
@@ -199,7 +211,7 @@ const Classwork = () => {
                                             sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
                                             <img src={student.image} alt={student.name} className="rounded-5" />
                                         </Box>
-                                        <Box> 
+                                        <Box>
                                             <Typography>{student.name}</Typography>
                                         </Box>
                                     </Box>
