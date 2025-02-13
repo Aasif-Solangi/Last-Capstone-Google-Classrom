@@ -36,22 +36,21 @@ const ClassDetail = () => {
       <Box className="mt-5"
         display="flex"
         flexDirection={{ xs: "column", md: "row" }}
-        sx={{ gap: 2 }}
-      >
+        sx={{ gap: 2 }} >
         <Box
           sx={{
             width: { xs: "100%", md: "22%" },
             borderRight: { xs: "none", md: "1px solid #ddd" },
             borderBottom: { xs: "none", md: "1px solid #ddd" },
-
-          }}
-        >
+          }}   >
           <Box sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className="mt-4">
-            <Box display="flex" alignItems="center" gap={2} sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0", padding: 1 }}  >
-              <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
-                <HomeIcon className="fs-5" />
-                <Typography >Home</Typography>
-              </Box>
+            <Box display="flex" alignItems="center" gap={2} sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0" }}>
+              <Button sx={{ textTransform: 'none', color: 'black' }} onClick={(() => navigate("/"))}>
+                <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
+                  <HomeIcon className="fs-5" />
+                  <Typography >Home</Typography>
+                </Box>
+              </Button>
             </Box>
             <Box display="flex" alignItems="center" gap={2} sx={{ padding: 1 }} className='my-2' >
               <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
@@ -74,11 +73,11 @@ const ClassDetail = () => {
             </Typography>
             {classRooms.map((classRoom) => (
               <Box key={classRoom.id}
-              display="flex"
-              alignItems="center"
-              gap={2}
-              sx={{ marginBottom: 2, cursor: "pointer" }}
-              onClick={() => navigate(`/class-detail/${classRoom.id}`)}>
+                display="flex"
+                alignItems="center"
+                gap={2}
+                sx={{ marginBottom: 2, cursor: "pointer" }}
+                onClick={() => navigate(`/class-detail/${classRoom.id}`)}>
                 <Box className="text-white rounded-5 d-flex justify-content-center align-items-center"
                   sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
                   {classRoom.name.charAt(0)}

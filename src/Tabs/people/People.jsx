@@ -1,17 +1,17 @@
 import React from "react";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import HomeIcon from "@mui/icons-material/Home";
+import { Box, Button, Typography } from "@mui/material";
 import GradingIcon from "@mui/icons-material/Grading";
+import TAImage from '../../assets/TA-profile.png';
+import HomeIcon from "@mui/icons-material/Home";
 import xWave from '../../assets/xWave.png';
 import Profile from '../../assets/Asif.png';
 import Developer from '../../assets/Sir.png';
-import TAImage from '../../assets/TA-profile.png';
 import Abuzar from '../../assets/Abuzar.jpg';
 import Ayaz from '../../assets/smile.jpg';
 import Faiz from '../../assets/Faiz.png';
 import Arif from '../../assets/arif.jpg';
 import Haris from '../../assets/Haris.jpg';
-import { Box, Button, Card, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router";
 
 const Dashboard = () => {

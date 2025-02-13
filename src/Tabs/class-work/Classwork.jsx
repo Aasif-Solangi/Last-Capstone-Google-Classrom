@@ -7,7 +7,7 @@ import Profile from '../../assets/Asif.png';
 import Developer from '../../assets/Sir.png';
 import TAImage from '../../assets/TA-profile.png';
 import Abuzar from '../../assets/Abuzar.jpg';
-import { Box, Button, Card, Grid, MenuItem, TextField, Typography } from "@mui/material";
+import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router";
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import ArticleIcon from '@mui/icons-material/Article';
