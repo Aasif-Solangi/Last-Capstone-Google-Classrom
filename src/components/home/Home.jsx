@@ -21,7 +21,6 @@ const Home = () => {
         { id: 8, name: "Xwave Digital Literacy" },
     ];
 
-
     const navigate = useNavigate();
 
     return (
@@ -35,8 +34,7 @@ const Home = () => {
                     sx={{
                         width: { xs: "100%", md: "25%" },
                         borderRight: { xs: "none", md: "1px solid #ddd" },
-                        borderBottom: { xs: "none", md: "1px solid #ddd" },
-
+                        borderBottom: { xs: "none", md: "1px solid #ddd" }
                     }}>
                     <Box sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className="mt-4">
                         <Box display="flex" alignItems="center" gap={2} sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0" }}  >
@@ -92,7 +90,7 @@ const Home = () => {
                     <Grid container spacing={3} justifyContent="flex start">
                         {classRooms.map((classRoom) => (
                             <Grid item xs={12} sm={6} md={4} key={classRoom.id}>
-                                <Card sx={{ borderRadius: 2, overflow: "hidden", boxShadow: 3 }}>
+                                <Card sx={{ borderRadius: 2, overflow: "hidden", boxShadow: 3 }} className=''>
                                     <img src={WebDev} alt="web dev" style={{
                                         width: '100%', height: 'auto', objectFit: 'cover', aspectRatio: '16/9'
                                     }} />
@@ -126,12 +124,13 @@ const Home = () => {
                                     </Box>
 
                                     <CardContent className='mt-5 pt-5'>
-                                        <Box display="flex" justifyContent="flex-end" mt={2} sx={{ borderTop: "1px solid #ddd" }} className="mt-3">
-                                            <IconButton>
-                                                <FolderOpenIcon />
-                                            </IconButton>
+                                        <Box display="flex" justifyContent="flex-end" mt={2}
+                                            sx={{ borderTop: "1px solid #ddd" }} className="mt-3">
                                             <IconButton>
                                                 <AssignmentIndIcon />
+                                            </IconButton>
+                                            <IconButton>
+                                                <FolderOpenIcon />
                                             </IconButton>
                                         </Box>
                                     </CardContent>

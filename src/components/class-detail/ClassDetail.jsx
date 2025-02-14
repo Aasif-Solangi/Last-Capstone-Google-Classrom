@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Button, Card, CardContent, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Button, Card, CardContent, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import ArticleIcon from '@mui/icons-material/Article';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -10,6 +10,7 @@ import { useNavigate } from "react-router";
 import BgImg from "../../assets/bg.png";
 
 const ClassDetail = () => {
+
   const classRooms = [
     { id: 1, name: "Web Dev Frontend S02" },
     { id: 2, name: "English Communication" },
@@ -26,9 +27,27 @@ const ClassDetail = () => {
     { id: '2', text: 'xWave posted a new assignment: Group 2 (Booking.com Clone)', date: '17 Jan' },
     { id: '3', text: 'Share exciting updates with your class!', date: '22 Jan' },
     { id: '4', text: 'Post an important announcement for your class!', date: '25 Jan' },
-    { id: '5', text: 'Let your class know about the latest updates!', date: '26 Jan' },
-    { id: '6', text: 'Keep your class informed with a new announcement!', date: '28 Jan' }
+    { id: '5', text: 'Let your class know about the latest updates!', date: '26 Jan' }
   ];
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
+
+  const handleMenuOpen = (event, id) => {
+    setAnchorEl(event.currentTarget);
+    setSelectedId(id);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    setSelectedId(null);
+  };
+
+  const handleDelete = () => {
+    console.log("Deleting assignment ID:", selectedId);
+    handleMenuClose();
+  };
+
 
   const navigate = useNavigate();
   return (
@@ -135,8 +154,8 @@ const ClassDetail = () => {
 
             <Box className="flex-grow-1" sx={{ width: { xs: "100%", sm: "50%", md: "75%" } }}>
               {assignments.map((assignment) => (
-                <Box flex={1} key={assignment.id} className="my-4">
-                  <Card>
+                <Box sx={{ cursor: 'pointer' }} flex={1} key={assignment.id} className="my-4">
+                  <Card onClick={(() => navigate('/instructionTabs'))}>
                     <Box className="py-2 d-flex align-items-center gap-3 ms-2">
                       <Box className="text-white rounded-5 d-flex justify-content-center align-items-center py-3"
                         sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
@@ -148,7 +167,18 @@ const ClassDetail = () => {
                           {assignment.date || 'No Date Available'}
                         </Typography>
                       </Box>
-                      <MoreVertIcon sx={{ marginLeft: 'auto' }} className="me-3" />
+
+                      <Tooltip title="More Options" placement="top">
+                        <MoreVertIcon
+                          sx={{ marginLeft: 'auto', cursor: 'pointer' }}
+                          className="me-3"
+                          onClick={(event) => handleMenuOpen(event, assignment.id)}
+                        />
+                      </Tooltip>
+                      <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+                        <MenuItem onClick={handleMenuClose}>Edit</MenuItem>
+                        <MenuItem onClick={handleDelete}>Delete</MenuItem>
+                      </Menu>
                     </Box>
                   </Card>
                 </Box>
