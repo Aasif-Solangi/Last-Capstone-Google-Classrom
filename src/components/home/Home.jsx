@@ -11,30 +11,31 @@ import { useNavigate } from 'react-router';
 
 const Home = () => {
     const classRooms = [
-        { id: 1, name: "Web Dev Frontend S02" },
-        { id: 2, name: "English Communication" },
-        { id: 3, name: "WordPress" },
-        { id: 4, name: "English 01" },
-        { id: 5, name: "Professional Development" },
-        { id: 6, name: "Web Dev Frontend S01" },
-        { id: 7, name: "English Communication" },
-        { id: 8, name: "Xwave Digital Literacy" },
+        { id: 1, name: "Web Dev Frontend S02", path: "/web-dev-frontend" },
+        { id: 2, name: "English Communication", path: "/english-communication" },
+        { id: 3, name: "WordPress", path: "/wordpress" },
+        { id: 4, name: "English 01", path: "/english-communication" },
+        { id: 5, name: "Professional Development", path: "/prof-development" },
+        { id: 6, name: "Web Dev Frontend S01", path: "/web-dev-frontend" },
+        { id: 7, name: "xWave Digital Literacy", path: "/xwave-digital" },
     ];
 
     const navigate = useNavigate();
 
+    const MyComponent = () => {
+        const navigate = useNavigate();
+    }
+
     return (
         <>
-
             <Box className="mt-5"
                 display="flex"
                 flexDirection={{ xs: "column", md: "row" }}
-                sx={{ gap: 2 }}>
+                sx={{ gap: 1 }}>
                 <Box
                     sx={{
-                        width: { xs: "100%", md: "25%" },
-                        borderRight: { xs: "none", md: "1px solid #ddd" },
-                        borderBottom: { xs: "none", md: "1px solid #ddd" }
+                        width: { xs: "100%", md: "28%" },
+                        borderRight: { xs: "none", md: "1px solid #ddd" }
                     }}>
                     <Box sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className="mt-4">
                         <Box display="flex" alignItems="center" gap={2} sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0" }}  >
@@ -59,7 +60,7 @@ const Home = () => {
                             </Box>
                         </Box>
                     </Box>
-                    <Box className='mx-3'>
+                    <Box className='mx-3' gap={2}>
                         <Typography sx={{ marginTop: 3, marginBottom: 2, fontWeight: "bold" }}>
                             To-do
                         </Typography>
@@ -87,59 +88,98 @@ const Home = () => {
                 </Box>
 
                 <Box sx={{ width: "95%", py: 3, px: 2 }}>
-                    <Grid container spacing={3} justifyContent="flex start">
+                    <Grid container spacing={3} justifyContent="flex-start">
                         {classRooms.map((classRoom) => (
                             <Grid item xs={12} sm={6} md={4} key={classRoom.id}>
-                                <Card sx={{ borderRadius: 2, overflow: "hidden", boxShadow: 3 }} className=''>
-                                    <img src={WebDev} alt="web dev" style={{
-                                        width: '100%', height: 'auto', objectFit: 'cover', aspectRatio: '16/9'
-                                    }} />
+                                <Card
+                                    sx={{
+                                        width: 310, height: 310,
+                                        cursor: "pointer", borderRadius: 2,
+                                        overflow: "hidden", boxShadow: 3,
+                                        display: "flex", flexDirection: "column",
+                                        position: "relative",
+                                    }}
 
-                                    <Box
-                                        sx={{
-                                            position: "relative",
-                                            backgroundSize: "cover",
-                                            backgroundPosition: "center",
-                                            height: "auto",
-                                            padding: "16px",
-                                            color: "#fff",
-                                            marginTop: "-200px",
-                                        }}>
-                                        <Typography variant="h5" fontWeight="bold">
-                                            {classRoom.name}
-                                        </Typography>
-                                        <Typography variant="body2">Cohort 2 - Kingri</Typography>
-                                        <Typography variant="body2" className='mt-2' mt={1} fontWeight="bold">
-                                            xWave Team
-                                        </Typography>
-                                        <IconButton className='mt-2'
+                                    onClick={() => {
+                                        if (classRoom.path) {
+                                            navigate(classRoom.path);
+                                        } else {
+                                            console.log("Path not defined for", classRoom.name);
+                                        }
+                                    }}>
+                                    <Box sx={{ position: "relative", width: "100%", height: "150px" }}>
+                                        <img src={WebDev}
+                                            alt="web dev"
+                                            style={{
+                                                width: "100%", height: "70%",
+                                                objectFit: "cover",
+                                            }} />
+
+                                        <Box
                                             sx={{
-                                                position: "absolute",
-                                                top: 5, right: 5,
-                                                color: "#fff",
-                                                background: "rgba(0,0,0,0.3)",
+                                                position: "absolute", bottom: 28, left: 0,
+                                                width: "100%", height: "100%", color: "#fff",
+                                                display: "flex", flexDirection: "column",
+                                                justifyContent: "center", padding: "16px",
                                             }}>
-                                            <MoreVertIcon />
-                                        </IconButton>
+                                            <Typography
+                                                variant="h5" fontWeight="bold"
+                                                sx={{
+                                                    whiteSpace: "nowrap", overflow: "hidden",
+                                                    textOverflow: "ellipsis",
+                                                    maxWidth: "100%"
+                                                }}>
+                                                {classRoom.name}
+                                            </Typography>
+                                            <Typography variant="body2">Cohort 2 - Kingri</Typography>
+                                            <Typography variant="body2" fontWeight="bold" mt={1}>
+                                                xWave Team
+                                            </Typography>
+                                        </Box>
                                     </Box>
 
-                                    <CardContent className='mt-5 pt-5'>
-                                        <Box display="flex" justifyContent="flex-end" mt={2}
-                                            sx={{ borderTop: "1px solid #ddd" }} className="mt-3">
-                                            <IconButton>
-                                                <AssignmentIndIcon />
-                                            </IconButton>
-                                            <IconButton>
-                                                <FolderOpenIcon />
-                                            </IconButton>
-                                        </Box>
+                                    <IconButton
+                                        sx={{
+                                            position: "absolute",
+                                            top: 5, right: 2,
+                                            color: "#fff", background: "rgba(0,0,0,0.3)",
+                                        }}>
+                                        <MoreVertIcon />
+                                    </IconButton>
+
+                                    <IconButton
+                                        className="px-4 py-4"
+                                        sx={{
+                                            position: "absolute",
+                                            top: 70, right: 20,
+                                            color: "#fff", background: "#7E57C2",
+                                            "&:hover": {
+                                                background: "#7E57C2",
+                                            }
+                                        }}>
+                                        <Typography className='fs-4 px-2'>X</Typography>
+                                    </IconButton>
+
+                                    <Box sx={{ flexGrow: 1 }} />
+                                    <CardContent
+                                        sx={{
+                                            borderTop: "1px solid #ddd",
+                                            padding: "8px", display: "flex",
+                                            justifyContent: "flex-end",
+                                        }} >
+                                        <IconButton>
+                                            <AssignmentIndIcon />
+                                        </IconButton>
+                                        <IconButton>
+                                            <FolderOpenIcon />
+                                        </IconButton>
                                     </CardContent>
                                 </Card>
                             </Grid>
                         ))}
                     </Grid>
                 </Box>
-            </Box>
+            </Box >
         </>
     );
 };

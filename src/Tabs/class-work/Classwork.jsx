@@ -101,17 +101,24 @@ const Classwork = () => {
                     <Box className="mt-3 pt-2"
                         display="flex" sx={{ borderBottom: "1px solid #ddd" }}>
                         <Button onClick={() => navigate("/stream")}>
-                            <Typography sx={{ textTransform: "none" }} className="mx-3">Stream</Typography>
+                            <Typography sx={{ textTransform: "none" }} className="mx-3 text-secondary">Stream</Typography>
                         </Button>
-                        <Button onClick={() => navigate("/class-work")} sx={{ borderBottom: "3px solid rgb(18, 43, 231)", }}>
+                        <Button
+                            onClick={() => navigate("/class-work")}
+                            sx={{
+                                borderBottom: "3px solid rgb(18, 43, 231)",
+                                borderRadius: "0",
+                            }}>
                             <Typography sx={{ color: "#007bff", textTransform: "none" }}>
                                 Classwork
                             </Typography>
                         </Button>
+
                         <Button onClick={() => navigate("/people")}>
-                            <Typography sx={{ textTransform: "none" }} className="ms-3">People</Typography>
+                            <Typography sx={{ textTransform: "none" }} className="ms-3 text-secondary">People</Typography>
                         </Button>
                     </Box>
+
                     <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2 }}>
                         <Box className="container" sx={{ width: { xs: "100%", sm: "50%", md: "75%" } }}>
                             <Button className="d-flex justify-content-between gap-2 mt-2" variant="text">
@@ -164,7 +171,7 @@ const Classwork = () => {
                                         <ArticleIcon />
                                     </Box>
                                     <Box>
-                                        <Typography>Template Assignment <MessageIcon className="fs-5 ms-2" />17</Typography>
+                                        <Typography>Template Assignment <MessageIcon className="fs-5 ms-2 text-secondary" /> 17</Typography>
                                     </Box>
                                 </Box>
                             </Box>
@@ -189,7 +196,7 @@ const Classwork = () => {
                                 <Typography variant="h5" sx={{ textTransform: 'none' }}>Capstone Project 3</Typography>
                             </Box>
                             <hr />
-                            <Box gap={2} className='my-3 d-flex justify-content-between'>
+                            <Box gap={2} className='my-3 d-flex justify-content-between' sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} >
                                 <Box class='d-flex justify-content-between align-items-center gap-2'>
                                     <Box className="text-white rounded-5 d-flex justify-content-center align-items-center py-3" sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
                                         <ArticleIcon />
@@ -201,7 +208,7 @@ const Classwork = () => {
                                 <Typography variant="body2"> No Due <MoreVertIcon /></Typography>
                             </Box>
 
-                            <Box className="py-2 mt-5">
+                            <Box className="py-2 mt-3">
                                 <Typography variant="h5" sx={{ textTransform: 'none' }}></Typography>
                             </Box>
                             {Students.map((student) => (
@@ -220,12 +227,10 @@ const Classwork = () => {
                         </Box>
                     </Box>
                 </Box>
-            </Box >
+            </Box>
         </>
     )
 }
-
-
 
 export default Classwork;
 

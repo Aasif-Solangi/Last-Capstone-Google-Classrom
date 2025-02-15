@@ -93,16 +93,16 @@ const Stream = () => {
         <Box flexGrow={1}>
           <Box className="mt-3 pt-2"
             display="flex" sx={{ borderBottom: "1px solid #ddd" }}>
-            <Button onClick={() => navigate("/stream")} sx={{ borderBottom: "3px solid rgb(18, 43, 231)", }}>
+            <Button onClick={() => navigate("/stream")} sx={{ borderRadius: "0", borderBottom: "3px solid rgb(18, 43, 231)", }}>
               <Typography sx={{ textTransform: "none" }} className="mx-3">Stream</Typography>
             </Button>
             <Button onClick={() => navigate("/class-work")}>
-              <Typography sx={{ color: "#007bff", textTransform: "none" }}>
+              <Typography className="text-secondary" sx={{ color: "#007bff", textTransform: "none" }}>
                 Classwork
               </Typography>
             </Button>
             <Button onClick={() => navigate("/people")}>
-              <Typography sx={{ textTransform: "none" }} className="ms-3">People</Typography>
+              <Typography sx={{ textTransform: "none" }} className="ms-3 text-secondary">People</Typography>
             </Button>
           </Box>
           <Box sx={{ marginTop: 1, textAlign: "center" }}>

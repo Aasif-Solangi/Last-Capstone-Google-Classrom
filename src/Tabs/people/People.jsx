@@ -108,15 +108,18 @@ const Dashboard = () => {
           <Box className="mt-3 pt-2"
             display="flex" sx={{ borderBottom: "1px solid #ddd" }}>
             <Button onClick={() => navigate("/stream")}>
-              <Typography sx={{ textTransform: "none" }} className="mx-3">Stream</Typography>
+              <Typography sx={{ textTransform: "none" }} className="mx-3 text-secondary">Stream</Typography>
             </Button>
             <Button onClick={() => navigate("/class-work")}>
-              <Typography sx={{ color: "#007bff", textTransform: "none" }}>
+              <Typography className="text-secondary" sx={{ color: "#007bff", textTransform: "none" }}>
                 Classwork
               </Typography>
             </Button>
-            <Button onClick={() => navigate("/people")} sx={{ borderBottom: "3px solid rgb(18, 43, 231)", }}>
-              <Typography sx={{ textTransform: "none" }} className="ms-3">People</Typography>
+            <Button  className='ms-3' onClick={() => navigate("/people")} sx={{
+              borderBottom: "3px solid rgb(18, 43, 231)",
+              borderRadius: "0",
+            }}>
+              <Typography sx={{ textTransform: "none" }}>People</Typography>
             </Button>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2 }}>

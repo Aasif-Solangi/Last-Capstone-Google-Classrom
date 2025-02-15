@@ -4,13 +4,12 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import ArticleIcon from '@mui/icons-material/Article';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import GradingIcon from "@mui/icons-material/Grading";
-import MeetIcon from '../../assets/meet-icon.png'
+import MeetIcon from '../../../assets/meet-icon.png';
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router";
-import BgImg from "../../assets/bg.png";
+import BgImgWP from "../../../assets/WordPress.jpg";
 
-const Communication = () => {
-
+const WordPress = () => {
   const classRooms = [
     { id: 1, name: "Web Dev Frontend S02" },
     { id: 2, name: "English Communication" },
@@ -22,16 +21,17 @@ const Communication = () => {
     { id: 8, name: "Xwave Digital Literacy (Sindhi)" },
   ];
 
-  const assignments = [
-    { id: '1', text: 'Announce something to your class', date: '' },
-    { id: '2', text: 'xWave posted a new assignment: Group 2 (Booking.com Clone)', date: '17 Jan' },
-    { id: '3', text: 'Share exciting updates with your class!', date: '22 Jan' },
-    { id: '4', text: 'Post an important announcement for your class!', date: '25 Jan' },
-    { id: '5', text: 'Let your class know about the latest updates!', date: '26 Jan' }
-  ];
+  const [assignments, setAssignments] = useState([
+    { id: '1', text: 'Add essential pages (Home, Destinations, About, Contact, Blog)', date: '' },
+    { id: '2', text: 'Create an eye-catching homepage with a featured blog post section', date: '17 Jan' },
+    { id: '3', text: 'Write at least three travel blog posts with featured images', date: '3 Mar' },
+    { id: '4', text: 'Install and configure plugins for SEO, contact forms, and social media integration', date: '20 frb' },
+    { id: '5', text: 'Ensure the website looks great on all devices.!', date: '2 feb' }
+  ]);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
+
 
   const handleMenuOpen = (event, id) => {
     setAnchorEl(event.currentTarget);
@@ -44,11 +44,12 @@ const Communication = () => {
   };
 
   const handleDelete = () => {
-    console.log("Deleting assignment ID:", selectedId);
+    setAssignments(assignments.filter(assignment => assignment.id !== selectedId));
     handleMenuClose();
   };
 
   const navigate = useNavigate();
+
   return (
     <>
       <Box className="mt-5"
@@ -66,7 +67,7 @@ const Communication = () => {
               <Button sx={{ textTransform: 'none', color: 'black' }} onClick={(() => navigate("/"))}>
                 <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
                   <HomeIcon className="fs-5" />
-                  <Typography >Home</Typography>
+                  <Typography>Home</Typography>
                 </Box>
               </Button>
             </Box>
@@ -108,7 +109,7 @@ const Communication = () => {
         <Box flexGrow={1}>
           <Box className="mt-3 pt-3"
             display="flex" sx={{ borderBottom: "1px solid #ddd" }}>
-            <Button onClick={() => navigate("/stream")} sx={{ borderBottom: "3px solid rgb(18, 43, 231)", }}>
+            <Button onClick={() => navigate("/stream")} sx={{ borderRadius: '0', borderBottom: "3px solid rgb(18, 43, 231)", }}>
               <Typography sx={{ textTransform: "none" }} className="mx-3">Stream</Typography>
             </Button>
             <Button onClick={() => navigate("/class-work")}>
@@ -120,12 +121,37 @@ const Communication = () => {
               <Typography sx={{ textTransform: "none" }} className="ms-3">People</Typography>
             </Button>
           </Box>
-          <Box sx={{ marginTop: 1, textAlign: "center" }}>
-            <img src={BgImg} alt="Background" style={{ maxWidth: "100%", height: "auto" }} />
+          
+          <Box sx={{ marginTop: 1, textAlign: "start", position: "relative", width: "100%", height: "200px" }}>
+            <img src={BgImgWP}
+              alt="WP"
+              style={{
+                width: "100%", height: "120%",
+                objectFit: "cover",
+              }} />
+
+            <Box
+              sx={{
+                position: "absolute", top: 70, left: 0,
+                width: "100%", height: "100%", color: "#fff",
+                display: "flex", flexDirection: "column",
+                justifyContent: "center", padding: "16px",
+              }}>
+              <Typography
+                variant="h5" fontWeight="bold"
+                sx={{
+                  whiteSpace: "nowrap", overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  maxWidth: "100%"
+                }}>Wordpress Layyah
+              </Typography>
+              <Typography variant="body2" fontWeight="bold" className="fs-4">Layyah C1</Typography>
+            </Box>
           </Box>
-          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2 }}>
+
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2 }} className='mt-3'>
             <Box sx={{ width: { xs: "100%", sm: "50%", md: "25%" } }}>
-              <Card className="mt-4 py-2 px-3 py-4">
+              <Card className="mt-5 py-2 px-3 py-4">
                 <Typography variant="h6" fontWeight="bold">
                   <Box className="d-flex justify-content-between align-content-center">
                     <img src={MeetIcon} width={30} alt="Icon" />
@@ -151,10 +177,10 @@ const Communication = () => {
               </Card>
             </Box>
 
-            <Box className="flex-grow-1" sx={{ width: { xs: "100%", sm: "50%", md: "75%" } }}>
+            <Box className="flex-grow-1 mt-4" sx={{ width: { xs: "100%", sm: "50%", md: "75%" } }}>
               {assignments.map((assignment) => (
-                <Box flex={1} key={assignment.id} className="my-4">
-                  <Card onClick={(() => navigate('/instructionTabs'))}>
+                <Box sx={{ cursor: 'pointer' }} flex={1} key={assignment.id} className="my-4">
+                  <Card onClick={() => navigate("/instructionTabs")}>
                     <Box className="py-2 d-flex align-items-center gap-3 ms-2">
                       <Box className="text-white rounded-5 d-flex justify-content-center align-items-center py-3"
                         sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
@@ -166,22 +192,37 @@ const Communication = () => {
                           {assignment.date || 'No Date Available'}
                         </Typography>
                       </Box>
+
                       <Tooltip title="More Options" placement="top">
                         <MoreVertIcon
                           sx={{ marginLeft: 'auto', cursor: 'pointer' }}
                           className="me-3"
-                          onClick={(event) => handleMenuOpen(event, assignment.id)}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            handleMenuOpen(event, assignment.id);
+                          }}
                         />
                       </Tooltip>
+
                       <Menu
                         anchorEl={anchorEl}
-                        open={Boolean(anchorEl)}
+                        open={Boolean(anchorEl) && selectedId === assignment.id}
                         onClose={handleMenuClose}>
-                        <MenuItem sx={{ boxShadow: "none" }} onClick={handleMenuClose}>Edit</MenuItem>
-                        <MenuItem sx={{ boxShadow: "none" }} onClick={handleDelete}>Delete</MenuItem>
+                        <MenuItem onClick={(event) => {
+                          event.stopPropagation();
+                        }}>
+                          Edit
+                        </MenuItem>
+                        <MenuItem onClick={(event) => {
+                          event.stopPropagation();
+                          handleDelete();
+                        }}>
+                          Delete
+                        </MenuItem>
                       </Menu>
                     </Box>
                   </Card>
+
                 </Box>
               ))}
             </Box>
@@ -192,4 +233,4 @@ const Communication = () => {
   );
 };
 
-export default Communication;
+export default WordPress;

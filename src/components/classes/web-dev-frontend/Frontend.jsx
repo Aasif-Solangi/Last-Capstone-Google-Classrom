@@ -4,12 +4,12 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import ArticleIcon from '@mui/icons-material/Article';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import GradingIcon from "@mui/icons-material/Grading";
-import MeetIcon from '../../assets/meet-icon.png';
+import MeetIcon from '../../../assets/meet-icon.png';
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router";
-import BgImgTech from "../../assets/S1.jpg";
+import BgImgTech from "../../../assets/S1.jpg";
 
-const ClassDetail = () => {
+const Frontend = () => {
   const classRooms = [
     { id: 1, name: "Web Dev Frontend S02" },
     { id: 2, name: "English Communication" },
@@ -22,12 +22,13 @@ const ClassDetail = () => {
   ];
 
   const [assignments, setAssignments] = useState([
-    { id: '1', text: 'Announce something to your class', date: '' },
-    { id: '2', text: 'xWave posted a new assignment: Group 2 (Booking.com Clone)', date: '17 Jan' },
-    { id: '3', text: 'Share exciting updates with your class!', date: '22 Jan' },
-    { id: '4', text: 'Post an important announcement for your class!', date: '25 Jan' },
-    { id: '5', text: 'Let your class know about the latest updates!', date: '26 Jan' }
+    { id: '1', text: ' Class Update: Important Announcements Inside!', date: '05 Feb' },
+    { id: '2', text: ' xWave: Build Your Own Travel Booking Website! (Group 2)', date: '12 Feb' },
+    { id: '3', text: ' UI/UX Challenge: Design an Engaging Landing Page', date: '18 Feb' },
+    { id: '4', text: ' Research Task: Explore Emerging Web Technologies', date: '01 Mar' },
+    { id: '5', text: ' Creative Project: Build a Portfolio Using React.js!', date: '10 Mar' }
   ]);
+  
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
@@ -121,7 +122,7 @@ const ClassDetail = () => {
               <Typography sx={{ textTransform: "none" }} className="ms-3">People</Typography>
             </Button>
           </Box>
-
+          
           <Box sx={{ marginTop: 1, textAlign: "start", position: "relative", width: "100%", height: "200px" }}>
             <img src={BgImgTech}
               alt="Tech"
@@ -233,4 +234,4 @@ const ClassDetail = () => {
   );
 };
 
-export default ClassDetail;
+export default Frontend;
