@@ -18,7 +18,7 @@ const WordPress = () => {
     { id: 5, name: "Professional Development" },
     { id: 6, name: "Web Dev Frontend S01" },
     { id: 7, name: "English Communication" },
-    { id: 8, name: "Xwave Digital Literacy (Sindhi)" },
+    { id: 8, name: "xWave Digital Literacy (Sindhi)" },
   ];
 
   const [assignments, setAssignments] = useState([

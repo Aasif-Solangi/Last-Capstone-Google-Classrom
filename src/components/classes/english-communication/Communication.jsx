@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Card, CardContent, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
+import { Box, Button, Card, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import ArticleIcon from '@mui/icons-material/Article';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -18,7 +18,7 @@ const Communication = () => {
     { id: 5, name: "Professional Development" },
     { id: 6, name: "Web Dev Frontend S01" },
     { id: 7, name: "English Communication" },
-    { id: 8, name: "Xwave Digital Literacy (Sindhi)" },
+    { id: 8, name: "xWave Digital Literacy (Sindhi)" },
   ];
 
   const [assignments, setAssignments] = useState([
@@ -87,7 +87,7 @@ const Communication = () => {
             </Box>
 
           </Box>
-          <Box className='mx-3'>
+          <Box className='mx-3 d-none d-md-block'>
             <Typography sx={{ marginTop: 3, marginBottom: 2, fontWeight: "bold" }}>
               To-do
             </Typography>

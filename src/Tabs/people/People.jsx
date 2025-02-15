@@ -141,11 +141,11 @@ const Dashboard = () => {
                 </Box>
               ))}
               <Box className="d-flex justify-content-center align-items-center text-center">
-                <Button sx={{ textTransform: 'none' }}>View All</Button>
+                <Button className="fs-6" sx={{ textTransform: 'none' }}>View All</Button>
               </Box>
               <Box className='d-flex justify-content-between' sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} >
                 <Typography variant="h5" className="text-dark">Classmates</Typography>
-                <Typography variant="body2"> 5 Students</Typography>
+                <Typography className="fs-6" variant="body2"> 5 Students</Typography>
               </Box>
 
               {Students.map((student) => (

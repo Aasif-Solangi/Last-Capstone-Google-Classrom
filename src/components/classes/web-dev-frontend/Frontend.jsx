@@ -18,7 +18,7 @@ const Frontend = () => {
     { id: 5, name: "Professional Development" },
     { id: 6, name: "Web Dev Frontend S01" },
     { id: 7, name: "English Communication" },
-    { id: 8, name: "Xwave Digital Literacy (Sindhi)" },
+    { id: 8, name: "xWave Digital Literacy (Sindhi)" },
   ];
 
   const [assignments, setAssignments] = useState([
@@ -85,14 +85,13 @@ const Frontend = () => {
                 <Typography >Enroll</Typography>
               </Box>
             </Box>
-
           </Box>
           <Box className='mx-3'>
             <Typography sx={{ marginTop: 3, marginBottom: 2, fontWeight: "bold" }}>
               To-do
             </Typography>
             {classRooms.map((classRoom) => (
-              <Box key={classRoom.id}
+              <Box  key={classRoom.id}
                 display="flex"
                 alignItems="center"
                 gap={2}

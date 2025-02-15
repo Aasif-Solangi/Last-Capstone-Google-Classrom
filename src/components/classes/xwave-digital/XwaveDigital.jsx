@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Card, CardContent, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
+import { Box, Button, Card, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import ArticleIcon from '@mui/icons-material/Article';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -18,7 +18,7 @@ const XwaveDigital = () => {
     { id: 5, name: "Professional Development" },
     { id: 6, name: "Web Dev Frontend S01" },
     { id: 7, name: "English Communication" },
-    { id: 8, name: "Xwave Digital Literacy (Sindhi)" },
+    { id: 8, name: "xWave Digital Literacy (Sindhi)" },
   ];
 
   const [assignments, setAssignments] = useState([
@@ -74,7 +74,7 @@ const XwaveDigital = () => {
             <Box display="flex" alignItems="center" gap={2} sx={{ padding: 1 }} className='my-2' >
               <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
                 <CalendarTodayIcon className="fs-5" />
-                <Typography >Calendar</Typography>
+                <Typography>Calendar</Typography>
               </Box>
             </Box>
 

@@ -1,54 +1,139 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Card, CardContent, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import { useNavigate, useParams } from "react-router-dom";
 import ArticleIcon from '@mui/icons-material/Article';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import GradingIcon from "@mui/icons-material/Grading";
 import MeetIcon from '../../assets/meet-icon.png';
 import HomeIcon from "@mui/icons-material/Home";
-import { useNavigate } from "react-router";
 import BgImgTech from "../../assets/S1.jpg";
+import English from '../../assets/English.jpg';
+import WP from '../../assets/WordPress.jpg';
 
 const ClassDetail = () => {
+  const { classId } = useParams();
+  const navigate = useNavigate();
+
   const classRooms = [
-    { id: 1, name: "Web Dev Frontend S02" },
-    { id: 2, name: "English Communication" },
-    { id: 3, name: "WordPress" },
-    { id: 4, name: "English 01" },
-    { id: 5, name: "Professional Development" },
-    { id: 6, name: "Web Dev Frontend S01" },
-    { id: 7, name: "English Communication" },
-    { id: 8, name: "Xwave Digital Literacy (Sindhi)" },
+    {
+      id: 1,
+      name: "Web Dev Frontend S02",
+      image: BgImgTech,
+      assignments: [
+        { id: '1', text: ' Class Update: Important Announcements Inside!', date: '05 Feb' },
+        { id: '2', text: ' xWave: Build Your Own Travel Booking Website! (Group 2)', date: '12 Feb' },
+        { id: '3', text: ' UI/UX Challenge: Design an Engaging Landing Page', date: '18 Feb' },
+        { id: '4', text: ' Research Task: Explore Emerging Web Technologies', date: '01 Mar' },
+        { id: '5', text: ' Creative Project: Build a Portfolio Using React.js!', date: '10 Mar' }
+      ],
+    },
+    {
+      id: 2,
+      name: "English Communication",
+      image: English,
+      assignments: [
+        { id: '1', text: 'Write a short essay on "The Power of Effective Communication"', date: '05 Feb' },
+        { id: '2', text: 'Analyze and summarize a TED Talk of your choice', date: '12 Feb' },
+        { id: '3', text: 'Grammar Challenge: Identify and correct 10 common mistakes', date: '20 Feb' },
+        { id: '4', text: 'Debate Preparation: Prepare arguments for a discussion on "Social Media Influence"', date: '01 Mar' },
+        { id: '5', text: 'Creative Writing: Write a short story using given prompts', date: '10 Mar' }
+      ],
+    },
+    {
+      id: 3,
+      name: "WordPress",
+      image: WP,
+      assignments: [
+        { id: '1', text: 'Add essential pages (Home, Destinations, About, Contact, Blog)', date: '' },
+        { id: '2', text: 'Create an eye-catching homepage with a featured blog post section', date: '17 Jan' },
+        { id: '3', text: 'Write at least three travel blog posts with featured images', date: '3 Mar' },
+        { id: '4', text: 'Install and configure plugins for SEO, contact forms, and social media integration', date: '20 frb' },
+        { id: '5', text: 'Ensure the website looks great on all devices.!', date: '2 feb' }
+      ],
+    },
+    {
+      id: 4,
+      name: "English 01",
+      image: English,
+      assignments: [
+        { id: '1', text: 'Add essential pages (Home, Destinations, About, Contact, Blog)', date: '' },
+        { id: '2', text: 'Create an eye-catching homepage with a featured blog post section', date: '17 Jan' },
+        { id: '3', text: 'Write at least three travel blog posts with featured images', date: '3 Mar' },
+        { id: '4', text: 'Install and configure plugins for SEO, contact forms, and social media integration', date: '20 frb' },
+        { id: '5', text: 'Ensure the website looks great on all devices.!', date: '2 feb' }
+      ],
+    },
+    {
+      id: 5,
+      name: "Professional Development",
+      image: English,
+      assignments: [
+        { id: '1', text: ' Class Announcement: Important Updates & Guidelines', date: '05 Feb' },
+        { id: '2', text: ' xWave: Develop a Feature-Rich Travel Booking Platform (Group 2)', date: '12 Feb' },
+        { id: '3', text: ' Market Analysis: Research & Present Key Web Trends', date: '20 Feb' },
+        { id: '4', text: ' Code Review & Optimization: Submit Your Best Practices', date: '01 Mar' },
+        { id: '5', text: ' Portfolio Enhancement: Build a Dynamic React Project', date: '10 Mar' }
+      ],
+    },
+    {
+      id: 6,
+      name: "Web Dev Frontend S01",
+      image: BgImgTech,
+      assignments: [
+        { id: '1', text: ' Class Update: Important Announcements Inside!', date: '05 Feb' },
+        { id: '2', text: ' xWave: Build Your Own Travel Booking Website! (Group 2)', date: '12 Feb' },
+        { id: '3', text: ' UI/UX Challenge: Design an Engaging Landing Page', date: '18 Feb' },
+        { id: '4', text: ' Research Task: Explore Emerging Web Technologies', date: '01 Mar' },
+        { id: '5', text: ' Creative Project: Build a Portfolio Using React.js!', date: '10 Mar' }
+      ],
+    },
+    {
+      id: 7,
+      name: "xWave Digital Literacy",
+      image: English,
+      assignments: [
+        { id: "1", text: " Announce something to your class", date: "" },
+        { id: "2", text: " xWave:Design a Modern Travel Portal!", date: "17 Feb" },
+        { id: "3", text: " Share exciting updates with your class!", date: "22 Jan" },
+        { id: "4", text: " Post an important announcement!", date: "25 Jan" },
+        { id: "5", text: " Latest updates for your class!", date: "26 Jan" },
+      ],
+    },
   ];
 
-  const [assignments, setAssignments] = useState([
-    { id: '1', text: 'Announce something to your class', date: '' },
-    { id: '2', text: 'xWave posted a new assignment: Group 2 (Booking.com Clone)', date: '17 Jan' },
-    { id: '3', text: 'Share exciting updates with your class!', date: '22 Jan' },
-    { id: '4', text: 'Post an important announcement for your class!', date: '25 Jan' },
-    { id: '5', text: 'Let your class know about the latest updates!', date: '26 Jan' }
-  ]);
+  const [selectedClass, setSelectedClass] = useState(null);
+
+  useEffect(() => {
+    const foundClass = classRooms.find((classRoom) => classRoom.id === parseInt(classId));
+    setSelectedClass(foundClass);
+  }, [classId]);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
 
-
   const handleMenuOpen = (event, id) => {
     setAnchorEl(event.currentTarget);
     setSelectedId(id);
-  };
+    };
 
   const handleMenuClose = () => {
     setAnchorEl(null);
     setSelectedId(null);
   };
 
-  const handleDelete = () => {
-    setAssignments(assignments.filter(assignment => assignment.id !== selectedId));
+  const handleDelete = (id) => {
+    const updatedAssignments = selectedClass.assignments.filter((assignment) => assignment.id !== id);
+    setSelectedClass((prevClass) => ({
+      ...prevClass,
+      assignments: updatedAssignments,
+    }));
     handleMenuClose();
   };
 
-  const navigate = useNavigate();
+  if (!selectedClass) {
+    return <Typography>Loading...</Typography>;
+  }
 
   return (
     <>
@@ -113,17 +198,17 @@ const ClassDetail = () => {
               <Typography sx={{ textTransform: "none" }} className="mx-3">Stream</Typography>
             </Button>
             <Button onClick={() => navigate("/class-work")}>
-              <Typography sx={{ color: "#007bff", textTransform: "none" }}>
+              <Typography className="text-secondary" sx={{ textTransform: "none" }}>
                 Classwork
               </Typography>
             </Button>
             <Button onClick={() => navigate("/people")}>
-              <Typography sx={{ textTransform: "none" }} className="ms-3">People</Typography>
+              <Typography sx={{ textTransform: "none" }} className="ms-3 text-secondary">People</Typography>
             </Button>
           </Box>
 
           <Box sx={{ marginTop: 1, textAlign: "start", position: "relative", width: "100%", height: "200px" }}>
-            <img src={BgImgTech}
+            <img src={selectedClass.image}
               alt="Tech"
               style={{
                 width: "100%", height: "120%",
@@ -143,7 +228,8 @@ const ClassDetail = () => {
                   whiteSpace: "nowrap", overflow: "hidden",
                   textOverflow: "ellipsis",
                   maxWidth: "100%"
-                }}>Frontend Development
+                }}>
+                {selectedClass.name}
               </Typography>
               <Typography variant="body2" fontWeight="bold" className="fs-4">Kingri C2</Typography>
             </Box>
@@ -178,7 +264,7 @@ const ClassDetail = () => {
             </Box>
 
             <Box className="flex-grow-1 mt-4" sx={{ width: { xs: "100%", sm: "50%", md: "75%" } }}>
-              {assignments.map((assignment) => (
+              {selectedClass.assignments.map((assignment) => (
                 <Box sx={{ cursor: 'pointer' }} flex={1} key={assignment.id} className="my-4">
                   <Card onClick={() => navigate("/instructionTabs")}>
                     <Box className="py-2 d-flex align-items-center gap-3 ms-2">
@@ -215,7 +301,7 @@ const ClassDetail = () => {
                         </MenuItem>
                         <MenuItem onClick={(event) => {
                           event.stopPropagation();
-                          handleDelete();
+                          handleDelete(assignment.id);
                         }}>
                           Delete
                         </MenuItem>

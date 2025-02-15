@@ -28,7 +28,7 @@ function App() {
         <Route path="/people" element={<People />} />
         <Route path="/class-work" element={<Classwork />} />
         <Route path="/stream" element={<Stream />} />
-        <Route path="/class-detail/:id" element={<ClassDetail />} />
+        <Route path="/class-detail/:classId" element={<ClassDetail />} />
         <Route path="/instructionTabs" element={<InstructionsTabs />} />
         <Route path="/student-work" element={<StudentWork />} />
         <Route path="/instructions" element={<Instructions />} />
@@ -37,7 +37,7 @@ function App() {
         <Route path="/prof-development" element={<ProfDevelopment />} />
         <Route path="/wordpress" element={<WordPress />} />
         <Route path="/xwave-digital" element={<XwaveDigital />} />
-        
+
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>

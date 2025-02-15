@@ -22,17 +22,13 @@ const Home = () => {
 
     const navigate = useNavigate();
 
-    const MyComponent = () => {
-        const navigate = useNavigate();
-    }
-
     return (
         <>
             <Box className="mt-5"
                 display="flex"
                 flexDirection={{ xs: "column", md: "row" }}
                 sx={{ gap: 1 }}>
-                <Box
+                <Box className="d-none d-sm-block"
                     sx={{
                         width: { xs: "100%", md: "28%" },
                         borderRight: { xs: "none", md: "1px solid #ddd" }
@@ -87,13 +83,13 @@ const Home = () => {
                     </Box>
                 </Box>
 
-                <Box sx={{ width: "95%", py: 3, px: 2 }}>
+                <Box sx={{ width: "95%", py: 3, px: 4}}>
                     <Grid container spacing={3} justifyContent="flex-start">
                         {classRooms.map((classRoom) => (
                             <Grid item xs={12} sm={6} md={4} key={classRoom.id}>
                                 <Card
                                     sx={{
-                                        width: 310, height: 310,
+                                        width: 315, height: 315,
                                         cursor: "pointer", borderRadius: 2,
                                         overflow: "hidden", boxShadow: 3,
                                         display: "flex", flexDirection: "column",
