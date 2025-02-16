@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, Card, CardContent, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Menu, MenuItem, Modal, TextField, Tooltip, Typography } from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import { useNavigate, useParams } from "react-router-dom";
 import ArticleIcon from '@mui/icons-material/Article';
@@ -103,19 +103,20 @@ const ClassDetail = () => {
   ];
 
   const [selectedClass, setSelectedClass] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [editedAssignment, setEditedAssignment] = useState({ id: "", text: "", date: "" });
 
   useEffect(() => {
     const foundClass = classRooms.find((classRoom) => classRoom.id === parseInt(classId));
     setSelectedClass(foundClass);
   }, [classId]);
 
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedId, setSelectedId] = useState(null);
-
   const handleMenuOpen = (event, id) => {
     setAnchorEl(event.currentTarget);
     setSelectedId(id);
-    };
+  };
 
   const handleMenuClose = () => {
     setAnchorEl(null);
@@ -131,12 +132,74 @@ const ClassDetail = () => {
     handleMenuClose();
   };
 
+  const handleEdit = (id) => {
+    const assignmentToEdit = selectedClass.assignments.find((assignment) => assignment.id === id);
+    setEditedAssignment(assignmentToEdit);
+    setEditModalOpen(true);
+    handleMenuClose();
+  };
+
+  const handleSaveEdit = () => {
+    const updatedAssignments = selectedClass.assignments.map((assignment) =>
+      assignment.id === editedAssignment.id ? editedAssignment : assignment
+    );
+    setSelectedClass((prevClass) => ({
+      ...prevClass,
+      assignments: updatedAssignments,
+    }));
+    setEditModalOpen(false);
+  };
+
+  const handleCancelEdit = () => {
+    setEditModalOpen(false);
+  };
+
   if (!selectedClass) {
     return <Typography>Loading...</Typography>;
   }
 
   return (
     <>
+      <Modal open={editModalOpen} onClose={handleCancelEdit}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%", left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 400, bgcolor: "background.paper",
+            boxShadow: 24,  p: 4,
+          }}>
+          <Typography variant="h6" gutterBottom>
+            Edit Assignment
+          </Typography>
+          <TextField
+            label="Assignment Text"
+            fullWidth
+            value={editedAssignment.text}
+            onChange={(e) =>
+              setEditedAssignment({ ...editedAssignment, text: e.target.value })
+            }
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            label="Due Date"
+            fullWidth
+            value={editedAssignment.date}
+            onChange={(e) =>
+              setEditedAssignment({ ...editedAssignment, date: e.target.value })
+            }
+            sx={{ mb: 2 }}
+          />
+          <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>
+            <Button onClick={handleCancelEdit} variant="outlined">
+              Cancel
+            </Button>
+            <Button onClick={handleSaveEdit} variant="contained" color="primary">
+              Save
+            </Button>
+          </Box>
+        </Box>
+      </Modal>
       <Box className="mt-5"
         display="flex"
         flexDirection={{ xs: "column", md: "row" }}
@@ -148,13 +211,11 @@ const ClassDetail = () => {
             borderBottom: { xs: "none", md: "1px solid #ddd" },
           }}   >
           <Box sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className="mt-4">
-            <Box display="flex" alignItems="center" gap={2} sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0" }}>
-              <Button sx={{ textTransform: 'none', color: 'black' }} onClick={(() => navigate("/"))}>
-                <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
-                  <HomeIcon className="fs-5" />
-                  <Typography>Home</Typography>
-                </Box>
-              </Button>
+            <Box display="flex" alignItems="center" gap={2} onClick={(() => navigate("/"))} sx={{ cursor: 'pointer', background: "#E8F0FE", borderRadius: "0px 40px 40px 0" }}>
+              <Box className='ms-3 py-2 d-flex justify-content-center align-items-center text-center' gap={2}>
+                <HomeIcon className="fs-5 ms-2" />
+                <Typography>Home</Typography>
+              </Box>
             </Box>
             <Box display="flex" alignItems="center" gap={2} sx={{ padding: 1 }} className='my-2' >
               <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
@@ -210,8 +271,7 @@ const ClassDetail = () => {
           <Box sx={{ marginTop: 1, textAlign: "start", position: "relative", width: "100%", height: "200px" }}>
             <img src={selectedClass.image}
               alt="Tech"
-              style={{
-                width: "100%", height: "120%",
+              style={{ width: "100%", height: "120%",
                 objectFit: "cover",
               }} />
 
@@ -289,13 +349,13 @@ const ClassDetail = () => {
                           }}
                         />
                       </Tooltip>
-
                       <Menu
                         anchorEl={anchorEl}
                         open={Boolean(anchorEl) && selectedId === assignment.id}
                         onClose={handleMenuClose}>
                         <MenuItem onClick={(event) => {
                           event.stopPropagation();
+                          handleEdit(assignment.id);
                         }}>
                           Edit
                         </MenuItem>
@@ -308,7 +368,6 @@ const ClassDetail = () => {
                       </Menu>
                     </Box>
                   </Card>
-
                 </Box>
               ))}
             </Box>

@@ -57,20 +57,18 @@ const Communication = () => {
         display="flex"
         flexDirection={{ xs: "column", md: "row" }}
         sx={{ gap: 2 }} >
-        <Box
+        <Box className='d-none d-md-block'
           sx={{
             width: { xs: "100%", md: "22%" },
             borderRight: { xs: "none", md: "1px solid #ddd" },
             borderBottom: { xs: "none", md: "1px solid #ddd" },
           }}   >
           <Box sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className="mt-4">
-            <Box display="flex" alignItems="center" gap={2} sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0" }}>
-              <Button sx={{ textTransform: 'none', color: 'black' }} onClick={(() => navigate("/"))}>
-                <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
-                  <HomeIcon className="fs-5" />
-                  <Typography>Home</Typography>
-                </Box>
-              </Button>
+            <Box display="flex" alignItems="center" gap={2} onClick={(() => navigate("/"))} sx={{ cursor: 'pointer', background: "#E8F0FE", borderRadius: "0px 40px 40px 0" }}>
+              <Box className='ms-3 py-2 d-flex justify-content-center align-items-center text-center' gap={2}>
+                <HomeIcon className="fs-5 ms-2" />
+                <Typography>Home</Typography>
+              </Box>
             </Box>
             <Box display="flex" alignItems="center" gap={2} sx={{ padding: 1 }} className='my-2' >
               <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
@@ -82,11 +80,11 @@ const Communication = () => {
             <Box display="flex" alignItems="center" gap={2} sx={{ padding: 1 }}>
               <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
                 <GradingIcon className="fs-5" />
-                <Typography >Enroll</Typography>
+                <Typography>Enroll</Typography>
               </Box>
             </Box>
-
           </Box>
+
           <Box className='mx-3 d-none d-md-block'>
             <Typography sx={{ marginTop: 3, marginBottom: 2, fontWeight: "bold" }}>
               To-do

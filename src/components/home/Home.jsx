@@ -34,25 +34,23 @@ const Home = () => {
                         borderRight: { xs: "none", md: "1px solid #ddd" }
                     }}>
                     <Box sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className="mt-4">
-                        <Box display="flex" alignItems="center" gap={2} sx={{ background: "#E8F0FE", borderRadius: "0px 40px 40px 0" }}  >
-                            <Button sx={{ textTransform: 'none', color: 'black' }} onClick={(() => navigate("/"))}>
-                                <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
-                                    <HomeIcon className="fs-5" />
-                                    <Typography >Home</Typography>
-                                </Box>
-                            </Button>
+                        <Box display="flex" alignItems="center" gap={2} sx={{ cursor: 'pointer', background: "#E8F0FE", borderRadius: "0px 40px 40px 0" }} onClick={(() => navigate("/"))}>
+                            <Box className='ms-3 py-2 d-flex justify-content-center align-items-center text-center' gap={2}>
+                                <HomeIcon className="fs-5 ms-2" />
+                                <Typography>Home</Typography>
+                            </Box>
                         </Box>
                         <Box display="flex" alignItems="center" gap={2} sx={{ padding: 1 }} className='my-2' >
                             <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
                                 <CalendarTodayIcon className="fs-5" />
-                                <Typography >Calendar</Typography>
+                                <Typography>Calendar</Typography>
                             </Box>
                         </Box>
 
                         <Box display="flex" alignItems="center" gap={2} sx={{ padding: 1 }}>
                             <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
                                 <GradingIcon className="fs-5" />
-                                <Typography >Enroll</Typography>
+                                <Typography>Enroll</Typography>
                             </Box>
                         </Box>
                     </Box>
@@ -63,10 +61,8 @@ const Home = () => {
                         <Box>
                             <Box>
                                 {classRooms.map((classRoom) => (
-                                    <Box
-                                        key={classRoom.id}
-                                        display="flex"
-                                        alignItems="center"
+                                    <Box key={classRoom.id}
+                                        display="flex" alignItems="center"
                                         gap={2}
                                         sx={{ marginBottom: 2, cursor: "pointer" }}
                                         onClick={() => navigate(`/class-detail/${classRoom.id}`)}>
@@ -83,18 +79,17 @@ const Home = () => {
                     </Box>
                 </Box>
 
-                <Box sx={{ width: "95%", py: 3, px: 4}}>
+                <Box sx={{ width: "95%", py: 3, px: 4 }}>
                     <Grid container spacing={3} justifyContent="flex-start">
                         {classRooms.map((classRoom) => (
                             <Grid item xs={12} sm={6} md={4} key={classRoom.id}>
-                                <Card
-                                    sx={{
-                                        width: 315, height: 315,
-                                        cursor: "pointer", borderRadius: 2,
-                                        overflow: "hidden", boxShadow: 3,
-                                        display: "flex", flexDirection: "column",
-                                        position: "relative",
-                                    }}
+                                <Card sx={{
+                                    width: 315, height: 315,
+                                    cursor: "pointer", borderRadius: 2,
+                                    overflow: "hidden", boxShadow: 3,
+                                    display: "flex", flexDirection: "column",
+                                    position: "relative",
+                                }}
 
                                     onClick={() => {
                                         if (classRoom.path) {
@@ -122,8 +117,7 @@ const Home = () => {
                                                 variant="h5" fontWeight="bold"
                                                 sx={{
                                                     whiteSpace: "nowrap", overflow: "hidden",
-                                                    textOverflow: "ellipsis",
-                                                    maxWidth: "100%"
+                                                    textOverflow: "ellipsis", maxWidth: "100%"
                                                 }}>
                                                 {classRoom.name}
                                             </Typography>
