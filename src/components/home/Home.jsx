@@ -1,7 +1,7 @@
-import { Box, Card, CardContent, IconButton, Typography, Grid } from '@mui/material';
-import React from 'react';
+import { Box, Card, CardContent, IconButton, Typography, Grid, Menu, MenuItem, Modal, TextField, Button } from '@mui/material';
+import React, { useState } from 'react';
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import AssignmentIndIcon from "@mui/icons-material/AssignmentInd"; 
+import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import HomeIcon from "@mui/icons-material/Home";
 import GradingIcon from "@mui/icons-material/Grading";
@@ -21,6 +21,39 @@ const Home = () => {
     ];
 
     const navigate = useNavigate();
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [assignmentTitle, setAssignmentTitle] = useState("");
+    const [assignments, setAssignments] = useState([]);
+    const [selectedClassRoomId, setSelectedClassRoomId] = useState(null);
+
+    const handleClick = (event, classRoomId) => {
+        event.stopPropagation();
+        setAnchorEl(event.currentTarget);
+        setSelectedClassRoomId(classRoomId);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+        setSelectedClassRoomId(null);
+    };
+
+    const handleCreateAssignment = () => {
+        setModalOpen(true);
+        handleClose();
+    };
+
+    const handleAssignmentSubmit = () => {
+        const newAssignment = {
+            title: assignmentTitle,
+            date: new Date().toLocaleDateString(),
+            classRoomId: selectedClassRoomId
+        };
+        setAssignments([...assignments, newAssignment]);
+        console.log("Assignment Created: ", newAssignment);
+        setModalOpen(false);
+        setAssignmentTitle("");
+    };
 
     return (
         <>
@@ -67,7 +100,6 @@ const Home = () => {
                                         sx={{ marginBottom: 2, cursor: "pointer" }}
                                         onClick={() => navigate(`/class-detail/${classRoom.id}`)}>
                                         <Box
-                                        
                                             className="text-white rounded-5 d-flex justify-content-center align-items-center"
                                             sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
                                             {classRoom.name.charAt(0)}
@@ -133,7 +165,8 @@ const Home = () => {
                                             position: "absolute",
                                             top: 5, right: 2,
                                             color: "#fff", background: "rgba(0,0,0,0.3)",
-                                        }}>
+                                        }}
+                                        onClick={(e) => handleClick(e, classRoom.id)}>
                                         <MoreVertIcon />
                                     </IconButton>
 
@@ -164,12 +197,42 @@ const Home = () => {
                                             <FolderOpenIcon />
                                         </IconButton>
                                     </CardContent>
+
+                                    {/* Display Assignments */}
+                                    {assignments.filter(assignment => assignment.classRoomId === classRoom.id).map((assignment, index) => (
+                                        <Box key={index} sx={{ p: 2 }}>
+                                            <Typography variant="body2" fontWeight="bold">
+                                                {assignment.title}
+                                            </Typography>
+                                            <Typography variant="body2" color="textSecondary">
+                                                Created on: {assignment.date}
+                                            </Typography>
+                                        </Box>
+                                    ))}
                                 </Card>
                             </Grid>
                         ))}
                     </Grid>
                 </Box>
             </Box>
+
+            <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                }} >
+                <MenuItem onClick={handleCreateAssignment}>Create Assignment</MenuItem>
+            </Menu>
+
+            <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+                <Box sx={{ width: 400, bgcolor: 'white', p: 3, mx: 'auto', mt: 10, borderRadius: 2 }}>
+                    <Typography variant="h6" gutterBottom>Create Assignment</Typography>
+                    <TextField fullWidth label="Assignment Title" value={assignmentTitle} onChange={(e) => setAssignmentTitle(e.target.value)} sx={{ mb: 2 }} />
+                    <Button variant="contained" color="primary" onClick={handleAssignmentSubmit} fullWidth>Submit</Button>
+                </Box>
+            </Modal>
         </>
     );
 };
