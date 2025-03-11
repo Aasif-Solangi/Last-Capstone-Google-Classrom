@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Card, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
+import { Box, Button, Card, Menu, MenuItem, Modal, TextField, Tooltip, Typography } from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import ArticleIcon from '@mui/icons-material/Article';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -30,7 +30,8 @@ const XwaveDigital = () => {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
-
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [editedAssignment, setEditedAssignment] = useState({ id: "", text: "", date: "" });
 
   const handleMenuOpen = (event, id) => {
     setAnchorEl(event.currentTarget);
@@ -42,9 +43,32 @@ const XwaveDigital = () => {
     setSelectedId(null);
   };
 
-  const handleDelete = () => {
-    setAssignments(assignments.filter(assignment => assignment.id !== selectedId));
+  const handleDelete = (id) => {
+    setAssignments(assignments.filter(assignment => assignment.id !== id));
     handleMenuClose();
+  };
+
+  const handleEdit = (id) => {
+    const assignmentToEdit = assignments.find((assignment) => assignment.id === id);
+    setEditedAssignment(assignmentToEdit);
+    setEditModalOpen(true);
+    handleMenuClose();
+  };
+
+  const handleSaveEdit = () => {
+    if (!editedAssignment.text || !editedAssignment.date) {
+      alert("Assignment text and date cannot be empty!");
+      return;
+    }
+    const updatedAssignments = assignments.map((assignment) =>
+      assignment.id === editedAssignment.id ? editedAssignment : assignment
+    );
+    setAssignments(updatedAssignments);
+    setEditModalOpen(false);
+  };
+
+  const handleCancelEdit = () => {
+    setEditModalOpen(false);
   };
 
   const navigate = useNavigate();
@@ -197,12 +221,13 @@ const XwaveDigital = () => {
                         onClose={handleMenuClose}>
                         <MenuItem onClick={(event) => {
                           event.stopPropagation();
+                          handleEdit(assignment.id);
                         }}>
                           Edit
                         </MenuItem>
                         <MenuItem onClick={(event) => {
                           event.stopPropagation();
-                          handleDelete();
+                          handleDelete(assignment.id);
                         }}>
                           Delete
                         </MenuItem>
@@ -215,6 +240,52 @@ const XwaveDigital = () => {
           </Box>
         </Box>
       </Box>
+      <Modal
+        open={editModalOpen}
+        onClose={handleCancelEdit}
+        BackdropProps={{
+          style: { backgroundColor: "rgba(0, 0, 0, 0.5)", backdropFilter: "blur(5px)" }
+        }}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%", left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 400, bgcolor: "background.paper",
+            boxShadow: 24, p: 4,
+          }}>
+          <Typography variant="h6" gutterBottom>
+            Edit Assignment
+          </Typography>
+          <TextField
+            label="Assignment Text"
+            fullWidth
+            value={editedAssignment.text}
+            onChange={(e) =>
+              setEditedAssignment({ ...editedAssignment, text: e.target.value })
+            }
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            label="Due Date"
+            fullWidth
+            value={editedAssignment.date}
+            onChange={(e) =>
+              setEditedAssignment({ ...editedAssignment, date: e.target.value })
+            }
+            sx={{ mb: 2 }}
+          />
+          <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>
+            <Button onClick={handleCancelEdit} variant="outlined">
+              Cancel
+            </Button>
+            <Button onClick={handleSaveEdit} variant="contained" color="primary">
+              Save
+            </Button>
+          </Box>
+        </Box>
+      </Modal>
     </>
   );
 };

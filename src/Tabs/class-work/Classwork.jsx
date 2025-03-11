@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, Button, MenuItem, TextField, Typography } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom"; // Ensure you're using react-router-dom
+import { useNavigate, useParams } from "react-router-dom";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import HomeIcon from "@mui/icons-material/Home";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -8,7 +8,6 @@ import GradingIcon from "@mui/icons-material/Grading";
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import ArticleIcon from '@mui/icons-material/Article';
 import MessageIcon from '@mui/icons-material/Message';
-
 
 const classWork = [
     {
@@ -224,8 +223,7 @@ const Classwork = () => {
                                 alignItems="center"
                                 gap={2}
                                 sx={{ marginBottom: 2, cursor: "pointer" }}
-                                onClick={() => handleClassClick(classRoom.id)}
-                            >
+                                onClick={() => handleClassClick(classRoom.id)}>
                                 <Box
                                     className="text-white rounded-5 d-flex justify-content-center align-items-center"
                                     sx={{ width: 32, height: 32, backgroundColor: "#007bff" }} >

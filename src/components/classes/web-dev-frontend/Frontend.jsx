@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Box, Button, Card, CardContent, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Menu, MenuItem, Modal, TextField, Tooltip, Typography } from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import ArticleIcon from '@mui/icons-material/Article';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import GradingIcon from "@mui/icons-material/Grading";
 import MeetIcon from '../../../assets/meet-icon.png';
 import HomeIcon from "@mui/icons-material/Home";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import BgImgTech from "../../../assets/S1.jpg";
 
 const Frontend = () => {
@@ -30,6 +30,8 @@ const Frontend = () => {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [editedAssignment, setEditedAssignment] = useState({ id: "", text: "", date: "" });
 
   const handleMenuOpen = (event, id) => {
     setAnchorEl(event.currentTarget);
@@ -44,6 +46,25 @@ const Frontend = () => {
   const handleDelete = () => {
     setAssignments(assignments.filter(assignment => assignment.id !== selectedId));
     handleMenuClose();
+  };
+
+  const handleEdit = (id) => {
+    const assignmentToEdit = assignments.find((assignment) => assignment.id === id);
+    setEditedAssignment(assignmentToEdit);
+    setEditModalOpen(true);
+    handleMenuClose();
+  };
+
+  const handleSaveEdit = () => {
+    const updatedAssignments = assignments.map((assignment) =>
+      assignment.id === editedAssignment.id ? editedAssignment : assignment
+    );
+    setAssignments(updatedAssignments);
+    setEditModalOpen(false);
+  };
+
+  const handleCancelEdit = () => {
+    setEditModalOpen(false);
   };
 
   const navigate = useNavigate();
@@ -93,7 +114,7 @@ const Frontend = () => {
                 alignItems="center"
                 gap={2}
                 sx={{ marginBottom: 2, cursor: "pointer" }}
-                onClick={() => navigate(`/class-work/${classRoom.id}`)} 
+                onClick={() => navigate(`/class-work/${classRoom.id}`)}
               >
                 <Box className="text-white rounded-5 d-flex justify-content-center align-items-center"
                   sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
@@ -211,6 +232,7 @@ const Frontend = () => {
                         onClose={handleMenuClose}>
                         <MenuItem onClick={(event) => {
                           event.stopPropagation();
+                          handleEdit(assignment.id);
                         }}>
                           Edit
                         </MenuItem>
@@ -229,6 +251,46 @@ const Frontend = () => {
           </Box>
         </Box>
       </Box>
+      <Modal open={editModalOpen} onClose={handleCancelEdit}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%", left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 400, bgcolor: "background.paper",
+            boxShadow: 24, p: 4,
+          }}>
+          <Typography variant="h6" gutterBottom>
+            Edit Assignment
+          </Typography>
+          <TextField
+            label="Assignment Text"
+            fullWidth
+            value={editedAssignment.text}
+            onChange={(e) =>
+              setEditedAssignment({ ...editedAssignment, text: e.target.value })
+            }
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            label="Due Date"
+            fullWidth
+            value={editedAssignment.date}
+            onChange={(e) =>
+              setEditedAssignment({ ...editedAssignment, date: e.target.value })
+            }
+            sx={{ mb: 2 }}
+          />
+          <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>
+            <Button onClick={handleCancelEdit} variant="outlined">
+              Cancel
+            </Button>
+            <Button onClick={handleSaveEdit} variant="contained" color="primary">
+              Save
+            </Button>
+          </Box>
+        </Box>
+      </Modal>
     </>
   );
 };

@@ -99,6 +99,7 @@ const ClassDetail = () => {
       ],
     },
   ];
+  
   const { classId } = useParams();
   const navigate = useNavigate();
 

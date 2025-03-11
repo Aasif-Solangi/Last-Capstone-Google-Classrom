@@ -10,7 +10,7 @@ import AddIcon from "@mui/icons-material/Add";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import HomeIcon from "@mui/icons-material/Home";
 import GradingIcon from "@mui/icons-material/Grading";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Outlet } from "react-router-dom"; // Import Outlet
 
 const AppLayout = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -220,6 +220,9 @@ const AppLayout = () => {
                     </Box>
                 </Drawer>
             </nav>
+            <Box component="main" sx={{ flexGrow: 1, }}>
+                <Outlet />
+            </Box>
         </Box>
     );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Card, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
+import { Box, Button, Card, Menu, MenuItem, Modal, TextField, Tooltip, Typography } from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import ArticleIcon from '@mui/icons-material/Article';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -10,7 +10,6 @@ import BgImgEng from "../../../assets/English.jpg";
 import { useNavigate } from "react-router-dom";
 
 const Communication = () => {
-
   const classRooms = [
     { id: 1, name: "Web Dev Frontend S02" },
     { id: 2, name: "English Communication" },
@@ -18,7 +17,7 @@ const Communication = () => {
     { id: 4, name: "English 01" },
     { id: 5, name: "Professional Development" },
     { id: 6, name: "Web Dev Frontend S01" },
-    { id: 7, name: "xWave Digital Literacy (Sindhi)" },
+    { id: 7, name: "xWave Digital Literacy (Sindhi)" }
   ];
 
   const [assignments, setAssignments] = useState([
@@ -29,10 +28,10 @@ const Communication = () => {
     { id: '5', text: 'Creative Writing: Write a short story using given prompts', date: '10 Mar' }
   ]);
 
-
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
-
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [editedAssignment, setEditedAssignment] = useState({ id: "", text: "", date: "" });
 
   const handleMenuOpen = (event, id) => {
     setAnchorEl(event.currentTarget);
@@ -49,6 +48,25 @@ const Communication = () => {
     handleMenuClose();
   };
 
+  const handleEdit = (id) => {
+    const assignmentToEdit = assignments.find((assignment) => assignment.id === id);
+    setEditedAssignment(assignmentToEdit);
+    setEditModalOpen(true);
+    handleMenuClose();
+  };
+
+  const handleSaveEdit = () => {
+    const updatedAssignments = assignments.map((assignment) =>
+      assignment.id === editedAssignment.id ? editedAssignment : assignment
+    );
+    setAssignments(updatedAssignments);
+    setEditModalOpen(false);
+  };
+
+  const handleCancelEdit = () => {
+    setEditModalOpen(false);
+  };
+
   const navigate = useNavigate();
 
   return (
@@ -62,7 +80,7 @@ const Communication = () => {
             width: { xs: "100%", md: "22%" },
             borderRight: { xs: "none", md: "1px solid #ddd" },
             borderBottom: { xs: "none", md: "1px solid #ddd" },
-          }}   >
+          }}>
           <Box sx={{ borderBottom: "1px solid #ddd", paddingBottom: 2 }} className="mt-4">
             <Box display="flex" alignItems="center" gap={2} onClick={(() => navigate("/"))} sx={{ cursor: 'pointer', background: "#E8F0FE", borderRadius: "0px 40px 40px 0" }}>
               <Box className='ms-3 py-2 d-flex justify-content-center align-items-center text-center' gap={2}>
@@ -73,7 +91,7 @@ const Communication = () => {
             <Box display="flex" alignItems="center" gap={2} sx={{ padding: 1 }} className='my-2' >
               <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
                 <CalendarTodayIcon className="fs-5" />
-                <Typography >Calendar</Typography>
+                <Typography>Calendar</Typography>
               </Box>
             </Box>
 
@@ -112,7 +130,7 @@ const Communication = () => {
               <Typography sx={{ textTransform: "none" }} className="mx-3">Stream</Typography>
             </Button>
             <Button onClick={() => navigate(`/class-work/${classRooms[0].id}`)}>
-              <Typography sx={{textTransform: "none" }} className="text-secondary">
+              <Typography sx={{ textTransform: "none" }} className="text-secondary">
                 Classwork
               </Typography>
             </Button>
@@ -199,12 +217,13 @@ const Communication = () => {
                         onClose={handleMenuClose}>
                         <MenuItem onClick={(event) => {
                           event.stopPropagation();
+                          handleEdit(assignment.id);
                         }}>
                           Edit
                         </MenuItem>
                         <MenuItem onClick={(event) => {
                           event.stopPropagation();
-                          handleDelete();
+                          handleDelete(assignment.id);
                         }}>
                           Delete
                         </MenuItem>
@@ -217,6 +236,47 @@ const Communication = () => {
           </Box>
         </Box>
       </Box>
+
+      <Modal open={editModalOpen} onClose={handleCancelEdit}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%", left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 400, bgcolor: "background.paper",
+            boxShadow: 24, p: 4,
+          }}>
+          <Typography variant="h6" gutterBottom>
+            Edit Assignment
+          </Typography>
+          <TextField
+            label="Assignment Text"
+            fullWidth
+            value={editedAssignment.text}
+            onChange={(e) =>
+              setEditedAssignment({ ...editedAssignment, text: e.target.value })
+            }
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            label="Due Date"
+            fullWidth
+            value={editedAssignment.date}
+            onChange={(e) =>
+              setEditedAssignment({ ...editedAssignment, date: e.target.value })
+            }
+            sx={{ mb: 2 }}
+          />
+          <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}>
+            <Button onClick={handleCancelEdit} variant="outlined">
+              Cancel
+            </Button>
+            <Button onClick={handleSaveEdit} variant="contained" color="primary">
+              Save
+            </Button>
+          </Box>
+        </Box>
+      </Modal>
     </>
   );
 };

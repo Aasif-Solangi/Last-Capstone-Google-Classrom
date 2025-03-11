@@ -1,7 +1,7 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Communication from "./components/classes/english-communication/Communication";
 import Frontend from "./components/classes/web-dev-frontend/Frontend";
 import ProfDevelopment from "./components/classes/prof-development/ProfDevelopment";
@@ -16,24 +16,62 @@ import Stream from "./Tabs/stream/Stream";
 import Home from "./components/home/Home";
 
 function App() {
-  return (
-    <Router>
-      <AppLayout />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/people" element={<People />} />
-        <Route path="/class-work/:classId" element={<Classwork />} />
-        <Route path="/stream" element={<Stream />} />
-        <Route path="/class-detail/:classId" element={<ClassDetail />} />
-        <Route path="/english-communication" element={<Communication />} />
-        <Route path="/web-dev-frontend" element={<Frontend />} />
-        <Route path="/prof-development" element={<ProfDevelopment />} />
-        <Route path="/wordpress" element={<WordPress />} />
-        <Route path="/xwave-digital" element={<XwaveDigital />} />
+  const router = createBrowserRouter([
+    {
+      element: <AppLayout><Outlet /></AppLayout>,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/people",
+          element: <People />
+        },
+        {
+          path: "/stream",
+          element: <Stream />
+        },
+        {
+          path: "class-work/:classId",
+          element: <Classwork />
+        },
+        {
+          path: "/class-detail/:classId",
+          element: <ClassDetail />
+        },
+        {
+          path: "/english-communication",
+          element: <Communication />
+        },
+        {
+          path: "/web-dev-frontend",
+          element: <Frontend />
+        },
+        {
+          path: "/prof-development",
+          element: <ProfDevelopment />
+        },
+        {
+          path: "/wordpress",
+          element: <WordPress />
+        },
+        {
+          path: "/xwave-digital",
+          element: <XwaveDigital />
+        },
+        {
+          path: "*",
+          element: <PageNotFound />
+        }
+      ]
+    }
+  ]);
 
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </Router>
+  return (
+    <div className='App'>
+      <RouterProvider router={router} />
+    </div>
   );
 }
 
