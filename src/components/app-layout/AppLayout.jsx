@@ -10,7 +10,7 @@ import AddIcon from "@mui/icons-material/Add";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import HomeIcon from "@mui/icons-material/Home";
 import GradingIcon from "@mui/icons-material/Grading";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const AppLayout = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -92,7 +92,7 @@ const AppLayout = () => {
                                         </Typography>
                                         <KeyboardArrowRightIcon className="text-black" />
                                         <Box className="ms-2">
-                                           
+
                                         </Box>
                                     </Box>
                                 )}
@@ -101,7 +101,7 @@ const AppLayout = () => {
                         {!isMobile && (
                             <Box sx={{ display: "flex", alignItems: "center" }}>
                                 <DehazeIcon className="text-black mx-1" sx={{ cursor: 'pointer', fontSize: 25 }} />
-                                <img onClick={(()=> navigate("/"))}
+                                <img onClick={(() => navigate("/"))}
                                     className="rounded-1 mx-3"
                                     src={ClassroomIcon}
                                     alt="Classroom"
@@ -113,6 +113,7 @@ const AppLayout = () => {
                                     variant="h6"
                                     component="div"
                                     sx={{
+                                        cursor: "pointer",
                                         color: "#333",
                                         display: { xs: "block", sm: "block" },
                                     }}>
@@ -137,7 +138,7 @@ const AppLayout = () => {
                         <Box sx={{ display: "flex", gap: 2, cursor: 'pointer' }}>
                             <AddIcon className="text-black mx-4 fs-4" />
                             <AppsIcon className="text-black mx-2" />
-                            <img onClick={(()=>navigate("/"))}
+                            <img onClick={(() => navigate("/"))}
                                 className="rounded-5 mx-3"
                                 src={ProfileIcon}
                                 alt="Profile"
@@ -175,7 +176,7 @@ const AppLayout = () => {
                                 <Button sx={{ textTransform: 'none', color: 'black' }} onClick={(() => navigate("/"))}>
                                     <Box className='ms-3 d-flex justify-content-center align-items-center text-center' gap={2}>
                                         <HomeIcon className="fs-5" />
-                                        <Typography >Home</Typography>
+                                        <Typography>Home</Typography>
                                     </Box>
                                 </Button>
                             </Box>
@@ -204,7 +205,7 @@ const AppLayout = () => {
                                             key={classRoom.id}
                                             display="flex" alignItems="center"
                                             gap={2} sx={{ marginBottom: 2, cursor: "pointer" }}
-                                            onClick={() => navigate(`/class-detail/${classRoom.id}`)}>
+                                            onClick={() => navigate(`/class-detail/${classRooms[0].id}`)}>
                                             <Box
                                                 className="text-white rounded-5 d-flex justify-content-center align-items-center"
                                                 sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
@@ -222,5 +223,4 @@ const AppLayout = () => {
         </Box>
     );
 };
-
 export default AppLayout;

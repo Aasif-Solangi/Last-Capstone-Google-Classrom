@@ -12,8 +12,6 @@ import English from '../../assets/English.jpg';
 import WP from '../../assets/WordPress.jpg';
 
 const ClassDetail = () => {
-  const { classId } = useParams();
-  const navigate = useNavigate();
 
   const classRooms = [
     {
@@ -21,11 +19,11 @@ const ClassDetail = () => {
       name: "Web Dev Frontend S02",
       image: BgImgTech,
       assignments: [
-        { id: '1', text: ' Class Update: Important Announcements Inside!', date: '05 Feb' },
-        { id: '2', text: ' xWave: Build Your Own Travel Booking Website! (Group 2)', date: '12 Feb' },
-        { id: '3', text: ' UI/UX Challenge: Design an Engaging Landing Page', date: '18 Feb' },
-        { id: '4', text: ' Research Task: Explore Emerging Web Technologies', date: '01 Mar' },
-        { id: '5', text: ' Creative Project: Build a Portfolio Using React.js!', date: '10 Mar' }
+        { id: '1', text: 'Class Update: Important Announcements Inside!', date: '05 Feb' },
+        { id: '2', text: 'xWave: Build Your Own Travel Booking Website! (Group 2)', date: '12 Feb' },
+        { id: '3', text: 'UI/UX Challenge: Design an Engaging Landing Page', date: '18 Feb' },
+        { id: '4', text: 'Research Task: Explore Emerging Web Technologies', date: '01 Mar' },
+        { id: '5', text: 'Creative Project: Build a Portfolio Using React.js!', date: '10 Mar' }
       ],
     },
     {
@@ -45,11 +43,11 @@ const ClassDetail = () => {
       name: "WordPress",
       image: WP,
       assignments: [
-        { id: '1', text: 'Add essential pages (Home, Destinations, About, Contact, Blog)', date: '' },
-        { id: '2', text: 'Create an eye-catching homepage with a featured blog post section', date: '17 Jan' },
-        { id: '3', text: 'Write at least three travel blog posts with featured images', date: '3 Mar' },
-        { id: '4', text: 'Install and configure plugins for SEO, contact forms, and social media integration', date: '20 frb' },
-        { id: '5', text: 'Ensure the website looks great on all devices.!', date: '2 feb' }
+        { id: "1", text: "Add essential pages (Home, Destinations, About, Contact, Blog)", date: "" },
+        { id: "2", text: "Create an eye-catching homepage with a featured blog post section", date: "17 Jan" },
+        { id: "3", text: "Write at least three travel blog posts with featured images", date: "3 Mar" },
+        { id: "4", text: "Install and configure plugins for SEO, contact forms, and social media integration", date: "20 feb" },
+        { id: "5", text: "Ensure the website looks great on all devices.!", date: "2 feb" }
       ],
     },
     {
@@ -57,11 +55,11 @@ const ClassDetail = () => {
       name: "English 01",
       image: English,
       assignments: [
-        { id: '1', text: 'Add essential pages (Home, Destinations, About, Contact, Blog)', date: '' },
-        { id: '2', text: 'Create an eye-catching homepage with a featured blog post section', date: '17 Jan' },
-        { id: '3', text: 'Write at least three travel blog posts with featured images', date: '3 Mar' },
-        { id: '4', text: 'Install and configure plugins for SEO, contact forms, and social media integration', date: '20 frb' },
-        { id: '5', text: 'Ensure the website looks great on all devices.!', date: '2 feb' }
+        { id: "1", text: "English Speaking practice", date: "" },
+        { id: "2", text: "Write an essay about xWave with 1000 words", date: "17 Jan" },
+        { id: "3", text: "Tell me about Frontend Technologies in English", date: "20 frb" },
+        { id: "4", text: "Write paragraph about your journey at xWave", date: "3 Mar" },
+        { id: "5", text: "What is the deference between British English and American English", Date: "2 feb" }
       ],
     },
     {
@@ -69,11 +67,11 @@ const ClassDetail = () => {
       name: "Professional Development",
       image: English,
       assignments: [
-        { id: '1', text: ' Class Announcement: Important Updates & Guidelines', date: '05 Feb' },
-        { id: '2', text: ' xWave: Develop a Feature-Rich Travel Booking Platform (Group 2)', date: '12 Feb' },
-        { id: '3', text: ' Market Analysis: Research & Present Key Web Trends', date: '20 Feb' },
-        { id: '4', text: ' Code Review & Optimization: Submit Your Best Practices', date: '01 Mar' },
-        { id: '5', text: ' Portfolio Enhancement: Build a Dynamic React Project', date: '10 Mar' }
+        { id: "1", text: "Class Announcement: Important Updates & Guidelines", date: "05 Feb" },
+        { id: "2", text: "xWave: Develop a Feature-Rich Travel Booking Platform (Group 2)", date: "12 Feb" },
+        { id: "3", text: "Market Analysis: Research & Present Key Web Trends", date: "20 Feb" },
+        { id: "4", text: "Code Review & Optimization: Submit Your Best Practices", date: "01 Mar" },
+        { id: "5", text: "Portfolio Enhancement: Build a Dynamic React Project", date: "10 Mar" }
       ],
     },
     {
@@ -81,11 +79,11 @@ const ClassDetail = () => {
       name: "Web Dev Frontend S01",
       image: BgImgTech,
       assignments: [
-        { id: '1', text: ' Class Update: Important Announcements Inside!', date: '05 Feb' },
-        { id: '2', text: ' xWave: Build Your Own Travel Booking Website! (Group 2)', date: '12 Feb' },
-        { id: '3', text: ' UI/UX Challenge: Design an Engaging Landing Page', date: '18 Feb' },
-        { id: '4', text: ' Research Task: Explore Emerging Web Technologies', date: '01 Mar' },
-        { id: '5', text: ' Creative Project: Build a Portfolio Using React.js!', date: '10 Mar' }
+        { id: "1", text: "Class Update: Important Announcements Inside!", date: "05 Feb" },
+        { id: "2", text: "xWave: Build Your Own Travel Booking Website! (Group 2)", date: "12 Feb" },
+        { id: "3", text: "UI/UX Challenge: Design an Engaging Landing Page", date: "18 Feb" },
+        { id: "4", text: "Research Task: Explore Emerging Web Technologies", date: "01 Mar" },
+        { id: "5", text: "Creative Project: Build a Portfolio Using React.js!", date: "10 Mar" }
       ],
     },
     {
@@ -93,14 +91,16 @@ const ClassDetail = () => {
       name: "xWave Digital Literacy",
       image: English,
       assignments: [
-        { id: "1", text: " Announce something to your class", date: "" },
-        { id: "2", text: " xWave:Design a Modern Travel Portal!", date: "17 Feb" },
-        { id: "3", text: " Share exciting updates with your class!", date: "22 Jan" },
-        { id: "4", text: " Post an important announcement!", date: "25 Jan" },
-        { id: "5", text: " Latest updates for your class!", date: "26 Jan" },
+        { id: "1", text: "Announce something to your class", date: "" },
+        { id: "2", text: "xWave:Design a Modern Travel Portal!", date: "17 Feb" },
+        { id: "3", text: "Share exciting updates with your class!", date: "22 Jan" },
+        { id: "4", text: "Post an important announcement!", date: "25 Jan" },
+        { id: "5", text: "Latest updates for your class!", date: "26 Jan" },
       ],
     },
   ];
+  const { classId } = useParams();
+  const navigate = useNavigate();
 
   const [selectedClass, setSelectedClass] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -167,7 +167,7 @@ const ClassDetail = () => {
             top: "50%", left: "50%",
             transform: "translate(-50%, -50%)",
             width: 400, bgcolor: "background.paper",
-            boxShadow: 24,  p: 4,
+            boxShadow: 24, p: 4,
           }}>
           <Typography variant="h6" gutterBottom>
             Edit Assignment
@@ -258,8 +258,8 @@ const ClassDetail = () => {
             <Button onClick={() => navigate("/stream")} sx={{ borderRadius: '0', borderBottom: "3px solid rgb(18, 43, 231)", }}>
               <Typography sx={{ textTransform: "none" }} className="mx-3">Stream</Typography>
             </Button>
-            <Button onClick={() => navigate("/class-work")}>
-              <Typography className="text-secondary" sx={{ textTransform: "none" }}>
+            <Button onClick={() => navigate(`/class-work/${classId}`)}>
+              <Typography sx={{ textTransform: "none" }} className="text-secondary">
                 Classwork
               </Typography>
             </Button>
@@ -271,7 +271,8 @@ const ClassDetail = () => {
           <Box sx={{ marginTop: 1, textAlign: "start", position: "relative", width: "100%", height: "200px" }}>
             <img src={selectedClass.image}
               alt="Tech"
-              style={{ width: "100%", height: "120%",
+              style={{
+                width: "100%", height: "120%",
                 objectFit: "cover",
               }} />
 
@@ -326,7 +327,7 @@ const ClassDetail = () => {
             <Box className="flex-grow-1 mt-4" sx={{ width: { xs: "100%", sm: "50%", md: "75%" } }}>
               {selectedClass.assignments.map((assignment) => (
                 <Box sx={{ cursor: 'pointer' }} flex={1} key={assignment.id} className="my-4">
-                  <Card onClick={() => navigate("/instructionTabs")}>
+                  <Card>
                     <Box className="py-2 d-flex align-items-center gap-3 ms-2">
                       <Box className="text-white rounded-5 d-flex justify-content-center align-items-center py-3"
                         sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
@@ -338,7 +339,6 @@ const ClassDetail = () => {
                           {assignment.date || 'No Date Available'}
                         </Typography>
                       </Box>
-
                       <Tooltip title="More Options" placement="top">
                         <MoreVertIcon
                           sx={{ marginLeft: 'auto', cursor: 'pointer' }}

@@ -6,7 +6,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import GradingIcon from "@mui/icons-material/Grading";
 import MeetIcon from '../../../assets/meet-icon.png';
 import HomeIcon from "@mui/icons-material/Home";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import BgImgWP from "../../../assets/WordPress.jpg";
 
 const XwaveDigital = () => {
@@ -17,16 +17,15 @@ const XwaveDigital = () => {
     { id: 4, name: "English 01" },
     { id: 5, name: "Professional Development" },
     { id: 6, name: "Web Dev Frontend S01" },
-    { id: 7, name: "English Communication" },
-    { id: 8, name: "xWave Digital Literacy (Sindhi)" },
+    { id: 7, name: "xWave Digital Literacy (Sindhi)" }
   ];
 
   const [assignments, setAssignments] = useState([
-    { id: "1", text: " Announce something to your class", date: "" },
-    { id: "2", text: " xWave:Design a Modern Travel Portal!", date: "17 Feb" },
-    { id: "3", text: " Share exciting updates with your class!", date: "22 Jan" },
-    { id: "4", text: " Post an important announcement!", date: "25 Jan" },
-    { id: "5", text: " Latest updates for your class!", date: "26 Jan" },
+    { id: "1", text: "Announce something to your class", date: "" },
+    { id: "2", text: "xWave:Design a Modern Travel Portal!", date: "17 Feb" },
+    { id: "3", text: "Share exciting updates with your class!", date: "22 Jan" },
+    { id: "4", text: "Post an important announcement!", date: "25 Jan" },
+    { id: "5", text: "Latest updates for your class!", date: "26 Jan" },
   ]);
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -110,13 +109,13 @@ const XwaveDigital = () => {
             <Button onClick={() => navigate("/stream")} sx={{ borderRadius: '0', borderBottom: "3px solid rgb(18, 43, 231)", }}>
               <Typography sx={{ textTransform: "none" }} className="mx-3">Stream</Typography>
             </Button>
-            <Button onClick={() => navigate("/class-work")}>
-              <Typography sx={{ color: "#007bff", textTransform: "none" }}>
+            <Button onClick={() => navigate(`/class-work/${classRooms[0].id}`)}>
+              <Typography sx={{ textTransform: "none", color: "#6C757D" }}>
                 Classwork
               </Typography>
             </Button>
             <Button onClick={() => navigate("/people")}>
-              <Typography sx={{ textTransform: "none" }} className="ms-3">People</Typography>
+              <Typography sx={{ textTransform: "none", color: "#6C757D" }} className="ms-3">People</Typography>
             </Button>
           </Box>
 
@@ -168,7 +167,7 @@ const XwaveDigital = () => {
             <Box className="flex-grow-1 mt-4" sx={{ width: { xs: "100%", sm: "50%", md: "75%" } }}>
               {assignments.map((assignment) => (
                 <Box sx={{ cursor: 'pointer' }} flex={1} key={assignment.id} className="my-4">
-                  <Card onClick={() => navigate("/instructionTabs")}>
+                  <Card>
                     <Box className="py-2 d-flex align-items-center gap-3 ms-2">
                       <Box className="text-white rounded-5 d-flex justify-content-center align-items-center py-3"
                         sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
@@ -210,7 +209,6 @@ const XwaveDigital = () => {
                       </Menu>
                     </Box>
                   </Card>
-
                 </Box>
               ))}
             </Box>

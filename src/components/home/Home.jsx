@@ -1,7 +1,7 @@
-import { Box, Card, CardContent, IconButton, Typography, Grid, Button } from '@mui/material';
+import { Box, Card, CardContent, IconButton, Typography, Grid } from '@mui/material';
 import React from 'react';
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
+import AssignmentIndIcon from "@mui/icons-material/AssignmentInd"; 
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import HomeIcon from "@mui/icons-material/Home";
 import GradingIcon from "@mui/icons-material/Grading";
@@ -17,7 +17,7 @@ const Home = () => {
         { id: 4, name: "English 01", path: "/english-communication" },
         { id: 5, name: "Professional Development", path: "/prof-development" },
         { id: 6, name: "Web Dev Frontend S01", path: "/web-dev-frontend" },
-        { id: 7, name: "xWave Digital Literacy", path: "/xwave-digital" },
+        { id: 7, name: "xWave Digital Literacy", path: "/xwave-digital" }
     ];
 
     const navigate = useNavigate();
@@ -67,6 +67,7 @@ const Home = () => {
                                         sx={{ marginBottom: 2, cursor: "pointer" }}
                                         onClick={() => navigate(`/class-detail/${classRoom.id}`)}>
                                         <Box
+                                        
                                             className="text-white rounded-5 d-flex justify-content-center align-items-center"
                                             sx={{ width: 32, height: 32, backgroundColor: "#007bff" }}>
                                             {classRoom.name.charAt(0)}
@@ -88,9 +89,8 @@ const Home = () => {
                                     cursor: "pointer", borderRadius: 2,
                                     overflow: "hidden", boxShadow: 3,
                                     display: "flex", flexDirection: "column",
-                                    position: "relative",
+                                    position: "relative"
                                 }}
-
                                     onClick={() => {
                                         if (classRoom.path) {
                                             navigate(classRoom.path);
@@ -169,7 +169,7 @@ const Home = () => {
                         ))}
                     </Grid>
                 </Box>
-            </Box >
+            </Box>
         </>
     );
 };
