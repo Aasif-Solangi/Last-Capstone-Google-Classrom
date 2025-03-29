@@ -76,7 +76,6 @@ const Frontend = () => {
         flexDirection={{ xs: "column", md: "row" }}
         sx={{ gap: 2 }} >
 
-        {/* Sidebar */}
         <Box className='d-none d-md-block'
           sx={{
             width: { xs: "100%", md: "22%" },

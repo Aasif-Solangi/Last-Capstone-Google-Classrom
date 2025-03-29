@@ -14,6 +14,7 @@ import Classwork from "./Tabs/class-work/Classwork";
 import People from "./Tabs/people/People";
 import Stream from "./Tabs/stream/Stream";
 import Home from "./components/home/Home";
+import { Box } from '@mui/material';
 
 function App() {
   const router = createBrowserRouter([
@@ -69,9 +70,9 @@ function App() {
   ]);
 
   return (
-    <div className='App'>
+    <Box>
       <RouterProvider router={router} />
-    </div>
+    </Box>
   );
 }
 
